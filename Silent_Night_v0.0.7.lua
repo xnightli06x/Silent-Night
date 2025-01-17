@@ -39,6 +39,8 @@ CPBg = FMg + 29211
 CPFHl = 24986  -- cayo perico fingerprint hack local 
 CPPCCl = 31049 + 3 -- cayo perico plasma cutter cut local ("DLC_H4_anims_glass_cutter_Sounds") 
 CPSTCl = 29810 -- cayo perico drainage pipe cut local
+CPXf1 = 52171 -- cayo perico instant finish local 1
+CPXf2 = 52171 + 1776 + 1 -- cayo perico instant finish local 2
 
 -- Apartment Heist Variables
 ACg1 = 1929317 + 1 + 1 -- global apartment player 1 cut global
@@ -740,12 +742,20 @@ function ()
 end
 )
 Doomsday:add_separator()
-Doomsday:add_text("By pass Doomsday Scenario hack")
+Doomsday:add_text("Extras")
 Doomsday:add_button("By Act III Pass hack",
 function ()
 	locals.set_int("fm_mission_controller", DDSHl, 3)
 end
 )
+Doomsday:add_sameline()
+Doomsday:add_button("Instant Finish", function()
+    locals.set_int("fm_mission_controller", 19781, 12)
+    locals.set_int("fm_mission_controller", 19781 + 1741, 150)
+    locals.set_int("fm_mission_controller", 28400 + 1, 99999)
+    locals.set_int("fm_mission_controller", 31656 + 69, 99999)
+end)
+
 -- Casino Heist --
 local CasinoHeist = Heist_Editor:add_tab("Diamond Casino Heist")
 CasinoHeist:add_text("Preps")
@@ -1019,7 +1029,11 @@ function()
 	end
 end)
 CasinoHeistExtra:add_sameline()
-
+CasinoHeistExtra:add_button("Kill Cooldown", function()
+    stats.set_int(MPX() .. "H3_COMPLETEDPOSIX", -1)
+    stats.set_int("MPPLY_H3_COOLDOWN", -1)
+end)
+CasinoHeistExtra:add_text("After clicking the Kill Cooldown button, go offline and then come back online")
 
 
 -- Cayo Heist --
@@ -1280,6 +1294,25 @@ CamList = {
 	joaat("hei_prop_bank_cctv_02"), joaat("ch_prop_ch_cctv_cam_02a"), joaat("xm_prop_x17_server_farm_cctv_01"),
 }
 
+Cayo:add_button("Instant Finish", function()
+    locals.set_int("fm_mission_controller_2020", CPXf1, 9)
+    locals.set_int("fm_mission_controller_2020", CPXf2, 50)
+end)
+
+Cayo:add_sameline()
+Cayo:add_button("Kill Cooldown (after solo)", function()
+    stats.set_int(MPX() .. "H4_TARGET_POSIX", 1659643454)
+    stats.set_int(MPX() .. "H4_COOLDOWN", 0)
+    stats.set_int(MPX() .. "H4_COOLDOWN_HARD", 0)
+end)
+Cayo:add_sameline()
+Cayo:add_button("Kill Cooldown (after team)", function()
+    stats.set_int(MPX() .. "H4_TARGET_POSIX", 1659429119)
+    stats.set_int(MPX() .. "H4_COOLDOWN", 0)
+    stats.set_int(MPX() .. "H4_COOLDOWN_HARD", 0)
+end)
+Cayo:add_text("After clicking the Kill Cooldown button, go offline and then come back online")
+
 Cayo:add_separator()
 Cayo:add_text("Teleports")
 for _, location in ipairs(cayoLocations) do
@@ -1438,6 +1471,11 @@ function ()
 	globals.set_int(GSIg + 6, 1)
 end
 )
+Bunker:add_button("Open Laptop", function()
+    SCRIPT.REQUEST_SCRIPT("appbunkerbusiness")
+    SYSTEM.START_NEW_SCRIPT("appbunkerbusiness", 4592)
+end)
+
 Bunker:add_separator()
 
 Bunker:add_text("Unlock All Research temporarily")
@@ -1541,6 +1579,11 @@ function ()
 	stats.set_packed_stat_bool(36828, true)
 end
 )
+Hangar:add_button("Open Laptop", function()
+    SCRIPT.REQUEST_SCRIPT("appsmuggler")
+    SYSTEM.START_NEW_SCRIPT("appsmuggler", 4592)
+end)
+
 local hangarloop = Hangar:add_checkbox("Hangar Loop")
 script.register_looped("hangarloop",
 	function (script)
@@ -1681,12 +1724,18 @@ function ()
 end
 )
 Nightclub:add_separator()
-Nightclub:add_text("Kill Cooldown")
+Nightclub:add_text("Misc")
 Nightclub:add_button("Cooldown Killer",
 function ()
 	NightclubCooldownKiller(true)
 end
 )
+Nightclub:add_sameline()
+Nightclub:add_button("Open Computer", function()
+    SCRIPT.REQUEST_SCRIPT("appbusinesshub")
+    SYSTEM.START_NEW_SCRIPT("appbusinesshub", 4592)
+end)
+
 -- Arcade loop - 
 local arcade = MoneyT:add_tab("Arcade")
 arcadeSafe = arcade:add_checkbox("Arcade Safe Loop")
@@ -1759,6 +1808,69 @@ Special:add_text("1. Go to Master Control of Arcade or Use Warehouse Computer")
 Special:add_text("2. Go to Special Cargo > Sell Cargo")
 Special:add_text("3. Go For $5mil and click sell")
 Special:add_text("4. Use Instant Finish given in Special")
+
+-- Easy Money --
+local EasyMoney = MoneyT:add_tab("Easy Money")
+
+function TriggerTransaction(hash)
+    script.execute_as_script("shop_controller", function()
+        if NETSHOPPING.NET_GAMESERVER_BASKET_IS_ACTIVE() then
+            NETSHOPPING.NET_GAMESERVER_BASKET_END()
+        end
+
+        local price = NETSHOPPING.NET_GAMESERVER_GET_PRICE(hash, 0x57DE404E, true)
+        local success, transactionId = NETSHOPPING.NET_GAMESERVER_BEGIN_SERVICE(-1135378931, 0x57DE404E, hash, 0x562592BB, price, 2)
+        if success then
+            NETSHOPPING.NET_GAMESERVER_CHECKOUT_START(transactionId)
+        end
+    end)
+end
+
+EasyMoney:add_text("Instant")
+EasyMoney:add_text("Gives 40mil dollars in a few seconds. Has a cooldown of about 1 hour.")
+EasyMoney:add_button("Give 40mil", function()
+    script.run_in_fiber(function(script)
+        TriggerTransaction(0x176D9D54)
+        script:sleep(3000)
+        TriggerTransaction(0xA174F633)
+        script:sleep(3000)
+        TriggerTransaction(0xED97AFC1)
+        script:sleep(3000)
+        TriggerTransaction(0x4B6A869C)
+        script:sleep(3000)
+        TriggerTransaction(0x314FB8B0)
+    end)
+end)
+
+EasyMoney:add_separator()
+EasyMoney:add_text("Freeroam")
+
+loop50k = EasyMoney:add_checkbox("50K Loop")
+script.register_looped("50kTransaction", function(script)
+    script:yield()
+    if loop50k:is_enabled() then
+        TriggerTransaction(0x610F9AB4)
+        script:sleep(333)
+    end
+end)
+
+loop100k = EasyMoney:add_checkbox("100K Loop")
+script.register_looped("100kTransaction", function(script)
+    script:yield()
+    if loop100k:is_enabled() then
+        TriggerTransaction(joaat("SERVICE_EARN_AMBIENT_JOB_AMMUNATION_DELIVERY"))
+        script:sleep(333)
+    end
+end)
+
+loop180k = EasyMoney:add_checkbox("180K Loop")
+script.register_looped("180kTransaction", function(script)
+    script:yield()
+    if loop180k:is_enabled() then
+        TriggerTransaction(0x615762F1)
+        script:sleep(333)
+    end
+end)
 
 -- Miscellaneous --
 local Miscellaneous = Silent:add_tab("Miscellaneous")
