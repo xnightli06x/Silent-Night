@@ -1385,33 +1385,35 @@ local apartCut2 = 0
 local apartCut3 = 0
 local apartCut4 = 0
 Apartment:add_imgui(
-	function ()
-		PAD.DISABLE_CONTROL_ACTION(2, 237, true)
-		ImGui.Text("Custom Cuts:")
-		ImGui.SetNextItemWidth(150)
-		apartCut1 = ImGui.InputInt("Cut 1", apartCut1)
-		ImGui.SameLine()
-		ImGui.SetNextItemWidth(150)
-		apartCut2 = ImGui.InputInt("Cut 2", apartCut2)
-		ImGui.SetNextItemWidth(150)
-		apartCut3 = ImGui.InputInt("Cut 3", apartCut3)
-		ImGui.SameLine()
-		ImGui.SetNextItemWidth(150)
-		apartCut4 = ImGui.InputInt("Cut 4", apartCut4)
-		if ImGui.Button("Set Cuts") then
-			script.run_in_fiber(function(ccut)
-			globals.set_int(ACg1, 100 - (apartCut1 * locals.get_int("fmmc_launcher", 19875 + 34)))
-			globals.set_int(ACg2, apartCut2)
-			globals.set_int(ACg3, apartCut3)
-			globals.set_int(ACg4, apartCut4)
-			PAD.SET_CONTROL_VALUE_NEXT_FRAME(2, 201, 1)
-			ccut:sleep(1000)
-    		PAD.SET_CONTROL_VALUE_NEXT_FRAME(2, 202, 1)
-			ccut:sleep(1000)
-			globals.set_int(ACg5, -1 * (-100 + globals.get_int(ACg1)) / 2)
-		end)
-	end
-	end
+    function ()
+        PAD.DISABLE_CONTROL_ACTION(2, 237, true)
+        ImGui.Text("Custom Cuts:")
+        ImGui.SetNextItemWidth(150)
+        apartCut1 = ImGui.InputInt("Cut 1", apartCut1)
+        ImGui.SameLine()
+        ImGui.SetNextItemWidth(150)
+        apartCut2 = ImGui.InputInt("Cut 2", apartCut2)
+        ImGui.SetNextItemWidth(150)
+        apartCut3 = ImGui.InputInt("Cut 3", apartCut3)
+        ImGui.SameLine()
+        ImGui.SetNextItemWidth(150)
+        apartCut4 = ImGui.InputInt("Cut 4", apartCut4)
+        if ImGui.Button("Set Cuts") then
+            script.run_in_fiber(function(ccut)
+                local heistType = locals.get_int("fmmc_launcher", 19875 + 34)
+                local multiplier = (heistType == 1328892776) and 2 or 4
+                globals.set_int(ACg1, 100 - (apartCut1 * multiplier))
+                globals.set_int(ACg2, apartCut2)
+                globals.set_int(ACg3, apartCut3)
+                globals.set_int(ACg4, apartCut4)
+                PAD.SET_CONTROL_VALUE_NEXT_FRAME(2, 201, 1)
+                ccut:sleep(1000)
+                PAD.SET_CONTROL_VALUE_NEXT_FRAME(2, 202, 1)
+                ccut:sleep(1000)
+                globals.set_int(ACg5, -1 * (-100 + globals.get_int(ACg1)) / multiplier)
+            end)
+        end
+    end
 )
 Apartment:add_separator()
 
