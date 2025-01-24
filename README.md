@@ -1,6 +1,6 @@
 # Silent Night
 
-This is an updated version of the Silent Night script for Yim. It works with b3411 1.70.
+This is an updated version of the Silent Night script for Yim.
 
 ## Installation
 1. Download the `.lua` file from the Releases section.
