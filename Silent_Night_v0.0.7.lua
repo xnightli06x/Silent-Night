@@ -360,8 +360,8 @@ local rp = {
     1527300,
 }
 
-local Manager = Silent:add_tab("Player Manager")
-local player = Manager:add_tab("Player Rank")
+local Manager = Silent:add_tab("Player Manager ")
+local player = Manager:add_tab("Player Rank ")
 player:add_text("Your current Rank is ".. stats.get_int(joaat(MPX() .. "CHAR_RANK_FM")))
 local globalFix = player:add_checkbox("Fix Global Rank")
 local rpLevel = player:add_input_int("Rank")
@@ -384,7 +384,7 @@ function ()
 		stats.set_int("MPPLY_GLOBALXP", rp[rpLevel:get_value()])
 	end
 end)
-local crew = Manager:add_tab("Crew Rank")
+local crew = Manager:add_tab("Crew Rank ")
 crew:add_text("Your current Crew Rank is ".. stats.get_int(joaat("MPPLY_CURRENT_CREW_RANK")))
 local level = crew:add_input_int("Rank")
 crew:add_button("Set Rank",
@@ -399,7 +399,7 @@ function()
 		changeSession(8)
 	end
 end)
-local skills = Manager:add_tab("Skills")
+local skills = Manager:add_tab("Skills ")
 skills:add_button("Max Player Skills",
 function ()
 	stats.set_int(MPX() .. "SCRIPT_INCREASE_DRIV", 100)
@@ -425,7 +425,7 @@ end)
 
 
 -- Heist Editor tab
-Heist_Editor = Silent:add_tab("Heist Editor")
+Heist_Editor = Silent:add_tab("Heist Editor ")
 
 -- Agency tab
 
@@ -439,7 +439,7 @@ local CONTRACT_ID = {
 local function setAgencyContract(contractId)
     stats.set_int(MPX() .. "FIXER_STORY_BS", contract_id[contractId])
 end
-local Agency = Heist_Editor:add_tab("Agency")
+local Agency = Heist_Editor:add_tab("Agency ")
 
 Agency:add_button("Nightclub Leak", function() setAgencyContract(CONTRACT_ID.NIGHTCLUB_LEAK) end)
 Agency:add_sameline()
@@ -478,7 +478,7 @@ Agency:add_separator()
 Agency:add_text("After All choices and pressing Complete Preps wait for sometime")
 
 -- Autoshop tab
-local Autoshop = Heist_Editor:add_tab("Autoshop")
+local Autoshop = Heist_Editor:add_tab("Autoshop ")
 Autoshop:add_text("Missions")
 
 -- Define a function to set the contract index
@@ -585,7 +585,7 @@ local salvalues = {
 	{ id = 3, name="Third Vehicle"}
 }
 local vehicle = 0
-local Salvage = Heist_Editor:add_tab("Salvage Yard")
+local Salvage = Heist_Editor:add_tab("Salvage Yard ")
 Salvage:add_text("Alter Vehicle Cost")
 Salvage:add_text("")
 Salvage:add_text("Set Vehicle value to $600,000 | Safe")
@@ -655,7 +655,7 @@ local cluckperps = {
 	{ id = 31, name = "Scene of Crime"}
 }
 
-local Cluck = Heist_Editor:add_tab("Cluckin Bell Heist")
+local Cluck = Heist_Editor:add_tab("Cluckin Bell Heist ")
 
 Cluck:add_text("Complete Preps")
 
@@ -691,7 +691,7 @@ local function DoomsdayActSetter(progress, status)
 	stats.set_int(MPX() .. "GANGOPS_FLOW_NOTIFICATIONS", 1557)
 end
 
-local Doomsday = Heist_Editor:add_tab("Doomsday Heist")
+local Doomsday = Heist_Editor:add_tab("Doomsday Heist ")
 Doomsday:add_text("Doomsday Acts")
 Doomsday:add_button("Data Breaches",
 function ()
@@ -757,7 +757,7 @@ Doomsday:add_button("Instant Finish", function()
 end)
 
 -- Casino Heist --
-local CasinoHeist = Heist_Editor:add_tab("Diamond Casino Heist")
+local CasinoHeist = Heist_Editor:add_tab("Diamond Casino Heist ")
 CasinoHeist:add_text("Preps")
 CasinoHeist:add_text("")
 local function CasinoApproachSetter(last_approach, hard_approach, approach, selected_approach)
@@ -981,7 +981,7 @@ function ()
 	locals.set_int("gb_casino_heist_planning", DCRBl, 2)
 end
 )
-local CasinoHeistExtra = CasinoHeist:add_tab("Extras")
+local CasinoHeistExtra = CasinoHeist:add_tab("Extras ")
 CasinoHeistExtra:add_text("Make Lester, Driver, Hacker, and Gunman cut to 0%")
 CasinoHeistExtra:add_button("Make Fees to 0",
 function ()
@@ -1147,7 +1147,7 @@ local cayoWeapons = {
 	{name="Saboteur", id = 4},
 	{name="Marksman", id = 5},
 }
-local Cayo = Heist_Editor:add_tab("Cayo Perico Heist")
+local Cayo = Heist_Editor:add_tab("Cayo Perico Heist ")
 
 Cayo:add_text("Cayo Bag Size Editor")
 local cayobag = Cayo:add_input_int("Bag Size")
@@ -1326,7 +1326,7 @@ end
 
 -- Apartment Heist --
 
-local Apartment = Heist_Editor:add_tab("Apartment Heist")
+local Apartment = Heist_Editor:add_tab("Apartment Heist ")
 Apartment:add_text("Preps")
 Apartment:add_button("Complete Preps", 
 function ()
@@ -1462,11 +1462,11 @@ Apartment:add_text("")
 Apartment:add_text("Note: After Clicking Unlock All Heists, restart the game")
 -- Money Tool --
 
-local MoneyT = Silent:add_tab("Money Tool")
+local MoneyT = Silent:add_tab("Money Tool ")
 
 -- Bunker Crash --
 
-local Bunker = MoneyT:add_tab("Bunker Crash")
+local Bunker = MoneyT:add_tab("Bunker Crash ")
 Bunker:add_text("Fill Bunker With Supplies")
 Bunker:add_button("Fill With Supplies",
 function ()
@@ -1518,7 +1518,7 @@ end
 )
 -- MC Businesses
 
-local MB = MoneyT:add_tab("MC Businesses")
+local MB = MoneyT:add_tab("MC Businesses ")
 MB:add_text("Resupply All Businesses")
 MB:add_button("Resupply All", function()
 	script.run_in_fiber(function(mcResupply)
@@ -1574,7 +1574,7 @@ MB:add_button("Raise Sale Prices", function()
 end)
 -- Hangar Cargo --
 
-local Hangar = MoneyT:add_tab("Hangar Cargo")
+local Hangar = MoneyT:add_tab("Hangar Cargo ")
 Hangar:add_text("Supplies")
 Hangar:add_button("Tell Rooster to get some cargo supplies",
 function ()
@@ -1651,7 +1651,7 @@ local function NightclubCooldownKiller(Enabled)
 		globals_set_ints(NHCKg2, NHCKg3, 1, 300000)
 	end
 end
-local Nightclub = MoneyT:add_tab("Night Club Utilities")
+local Nightclub = MoneyT:add_tab("Night Club Utilities ")
 Nightclub:add_text("Nightclub Loop")
 Nightclub:add_text("This Fill the Popularity of Nightclub and Fills the Safe with 50000 every 2s and Auto-Collect when safe is full")
 local safeloop = Nightclub:add_checkbox("Enable Nitghtclub $250k/15s (Safe AFK)")
@@ -1739,7 +1739,7 @@ Nightclub:add_button("Open Computer", function()
 end)
 
 -- Arcade loop - 
-local arcade = MoneyT:add_tab("Arcade")
+local arcade = MoneyT:add_tab("Arcade ")
 arcadeSafe = arcade:add_checkbox("Arcade Safe Loop")
 script.register_looped("arcadeloop", function(script)
     script:yield()
@@ -1752,7 +1752,7 @@ script.register_looped("arcadeloop", function(script)
 end)
 -- Special Cargo --
 
-local Special = MoneyT:add_tab("Special Cargo")
+local Special = MoneyT:add_tab("Special Cargo ")
 Special:add_text("Get Cargo Supplies")
 Special:add_button("Get Supplies",
 function ()
@@ -1812,7 +1812,7 @@ Special:add_text("3. Go For $5mil and click sell")
 Special:add_text("4. Use Instant Finish given in Special")
 
 -- Easy Money --
-local EasyMoney = MoneyT:add_tab("Easy Money")
+local EasyMoney = MoneyT:add_tab("Easy Money ")
 
 function TriggerTransaction(hash)
     script.execute_as_script("shop_controller", function()
@@ -1875,7 +1875,7 @@ script.register_looped("180kTransaction", function(script)
 end)
 
 -- Miscellaneous --
-local Miscellaneous = Silent:add_tab("Miscellaneous")
+local Miscellaneous = Silent:add_tab("Miscellaneous ")
 -- Vehicle Utilities --
 function FastAcc(speed)
 	local vehicle = PED.GET_VEHICLE_PED_IS_IN(PLAYER.PLAYER_PED_ID(), true)
@@ -1883,7 +1883,7 @@ function FastAcc(speed)
 	VEHICLE.SET_VEHICLE_MAX_SPEED(vehicle, speed)
 end
 
-local VehUtils = Miscellaneous:add_tab("Vehicle Utilities")
+local VehUtils = Miscellaneous:add_tab("Vehicle Utilities ")
 VehUtils:add_text("Set Top Speed Of Vehicle")
 local vehTopSpeed = VehUtils:add_input_int("Top Speed")
 VehUtils:add_button("Set Top Speed",
@@ -2129,7 +2129,7 @@ end
 )
 
 
-local unlocker = Miscellaneous:add_tab("Unlocker Menu")
+local unlocker = Miscellaneous:add_tab("Unlocker Menu ")
 unlocker:add_text("Unlock All the Things you want")
 unlocker:add_button("Unlock All Parachutes",
 	function()
@@ -2354,7 +2354,7 @@ end
 )
 -- LSCM ---
 
-local LSCM = Miscellaneous:add_tab("LSCM Unlocker Menu")
+local LSCM = Miscellaneous:add_tab("LSCM Unlocker Menu ")
 
 LSCM:add_button("Unlock All Rep Lvl 1000", function()
 	for i = 262145 + 30958, 262145 + 30987 do
@@ -2375,7 +2375,7 @@ LSCM:add_button("Unlock Prize Ride",
 
 
 
-local gun_van_tab = Silent:add_tab("Gun Van Menu")
+local gun_van_tab = Silent:add_tab("Gun Van Menu ")
 
 local gunvan_locations = {
 	vec3:new(-29.532, 6435.136, 31.162),
@@ -2777,7 +2777,7 @@ end)
 
 
 -- No Needs --
-local NoNeed = Silent:add_tab("No Need")
+local NoNeed = Silent:add_tab("No Need ")
 NoNeed:add_text("This Script are generally not worth")
 NoNeed:add_separator()
 NoNeed:add_text("Bottom Dollars")
@@ -2801,7 +2801,7 @@ NoNeed:add_text("Note: Do that outside Bail Office")
 
 
 -- Credits --
-local Credits = Silent:add_tab("Credits")
+local Credits = Silent:add_tab("Credits ")
 Credits:add_text("Developer: SilentSalo", null)
 Credits:add_text("Helpers: gaymer, Big Smoke, Slon")
 Credits:add_text("Helpers: CasinoPacino, Bababoiiiii")
