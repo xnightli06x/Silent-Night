@@ -11,4 +11,4 @@ This is an updated version of the Silent Night script for Yim.
 - SomeoneSleepy
 - Platindesk
 
-I am not the original creator of this script. I only updated the script to work with b3411 1.70.
+I am not the original creator of this script. Updated the script to work with b3504 1.70.
