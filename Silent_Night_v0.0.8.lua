@@ -755,7 +755,7 @@ Doomsday:add_button("Instant Finish", function()
     locals.set_int("fm_mission_controller", 19783 + 1740 + 1, 150)
     locals.set_int("fm_mission_controller", 28402 + 1, 99999)
     locals.set_int("fm_mission_controller", 31658 + 1 + 68, 99999)
-	locals.set_int("fm_mission_controller", 31658 + 97, 80)
+    locals.set_int("fm_mission_controller", 31658 + 97, 80)
 end)
 
 -- Casino Heist --
