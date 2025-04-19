@@ -1354,14 +1354,14 @@ script.register_looped("removeCool", function(remt)
 end)
 
 local heistCuts = {
-    [1328892776] = {-14806, 7453},
-    [964111671] =  {-4184, 2142},
-    [1131632450] = {-3074, 1587},
-    [1967927346] = {-4100, 2100},
-    [1182286714] = {-1900, 1000}
+    [1328892776] = {-2878, 1489},
+    [964111671] =  {-756, 428},
+    [1131632450] = {-534, 317},
+    [1967927346] = {-748, 424},
+    [1182286714] = {-300, 200}
 }
 
-Apartment:add_button("15mil Payout",
+Apartment:add_button("3mil Payout",
 function()
 script.run_in_fiber(function(ap)
 	local key = globals.get_int(1877417 + (PLAYER.PLAYER_ID() * 77) + 24 + 2)
