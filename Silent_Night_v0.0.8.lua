@@ -1471,9 +1471,18 @@ function ()
 end
 )
 Apartment:add_sameline()
-Apartment:add_button("Unlock All Heists",
-function ()
-	globals.set_int(1877417 + 1 + (PLAYER.PLAYER_ID() * 77 + 1) + 76, 31)
+Apartment:add_button("Unlock All Heists", 
+function()
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_0", globals.get_int(AUAJg1))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_0_L", 5)
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_1", globals.get_int(AUAJg2))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_1_L", 5)
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_2", globals.get_int(AUAJg3))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_2_L", 5)
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_3", globals.get_int(AUAJg4))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_3_L", 5)
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_4", globals.get_int(AUAJg5))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_4_L", 5)
 end
 )
 Apartment:add_sameline()
