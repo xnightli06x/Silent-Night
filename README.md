@@ -4,7 +4,7 @@ This is an updated version of the Silent Night script for Yim.
 
 ## Installation
 1. Download the `.lua` file from the Releases section.
-2. Follow the tutorial on the [Discord server](https://discord.com/invite/AYpT8cBaVb).
+2. Place the downloaded file in `%AppData%\YimMenu\scripts`
 
 ## Credits
 - Original script dev [SilentSalo](https://github.com/SilentSalo/SilentNight)
