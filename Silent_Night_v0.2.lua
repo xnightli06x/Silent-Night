@@ -116,8 +116,7 @@ NHCKg3 = FMg + 24068 -- nightclub helper cooldown killer global 3 (464940095)
 NLSCg = FMg + 23680 -- night loop safe capacity global ("NIGHTCLUBMAXSAFEVALUE")
 NLISg = FMg + 23657 -- night loop income start global ("NIGHTCLUBINCOMEUPTOPOP5")
 NLIEg = FMg + 23676 -- night loop income end global ("NIGHTCLUBINCOMEUPTOPOP100")
-NLSt = 204 + 32 + 2 -- night loop type local
-NLCl = 204 + 32 + 19 + 1 -- night loop collect local
+NLCl = 204 + 32 + 1 -- night loop collect local
 
 -- Special Cargo Variables
 SCVPg = FMg + 15732 	-- special cargo vip price global ("EXEC_CONTRABAND_SALE_VALUE_THRESHOLD1")
