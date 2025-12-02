@@ -92,32 +92,32 @@ BUAg1 = FMg + 21268 -- bunker unlocker additional global 1 (1485279815)
 BUAg2 = FMg + 21269 -- bunker unlocker additional global 2 (2041812011)
 GSIg = 1668000 		-- get supplies instantly global ("OR_PSUP_DEL)
 BCISl = 1264 + 774 	-- bunker crash instant sell local
-BCFp1 = FMg + 32359 -- bunker fast production (ENABLE_CONTROL_SUPPLY_GUNRUNNINGBUNKER_CARGO)
-BCFp2 = FMg + 21249 -- bunker fast production (GR_MANU_PRODUCTION_TIME)
-BCFp3 = FMg + 32366 -- bunker fast production (SPEED_SUPPLY_GUNRUNNINGBUNKER_CARGO)
+BCFp1 = 2708158 + 1 + 5 * 2 -- bunker fast production
+BCFp2 = 2708158 + 1 + 5 * 2 + 1 -- bunker fast production 
 
 
 -- Hangar Variables
 HCVPg = FMg + 22492 -- hangar cargo vip payout global (-954321460)
 HCVRCg = FMg + 22475 -- hangar cargo vip ron's cut (1232447926)
 HCVISl1 = 1987 + 1078 -- hangar cargo vip instant sell local 1
-HCVISl2 = 1987 + 1035 -- hangar cargo vip instant sell local 2
+HCVISl2 = 1987 + 768 -- hangar cargo vip instant sell local 2
 
 -- Nightclub Variables
-NHCNSg = FMg + 23969 -- nightclub helper cargo n shipments global (1162393585)
-NHSGg = FMg + 23963 -- nightclub helper sporting goods global (-1523050891)
-NHSAIg = FMg + 23964 -- nightclub helper s.a. imports global (147773667)
-NHPRg = FMg + 24595 -- nightclub helper pharmaceutical reseacrh global (-1188700671)
+NHCNSg = FMg + 23968 -- nightclub helper cargo n shipments global (1162393585)
+NHSGg = FMg + 23962 -- nightclub helper sporting goods global (-1523050891)
+NHSAIg = FMg + 23963 -- nightclub helper s.a. imports global (147773667)
+NHPRg = FMg + 23964 -- nightclub helper pharmaceutical reseacrh global (-1188700671)
 NHOPg = FMg + 23965 -- nightclub helper organic produce global (-1188963032)
-NHPNCg = FMg + 23967 -- nightclub helper printing n copying global (967514627)
-NHCCg = FMg + 23968 -- nightclub helper cash creation global (1983962738)
+NHPNCg = FMg + 23966 -- nightclub helper printing n copying global (967514627)
+NHCCg = FMg + 23967 -- nightclub helper cash creation global (1983962738)
 NHCKg1 = FMg + 24026 -- nightclub helper cooldown killer global 1 (1763921019)
 NHCKg2 = FMg + 24067 -- nightclub helper cooldown killer global 2 (-1004589438)
 NHCKg3 = FMg + 24068 -- nightclub helper cooldown killer global 3 (464940095)
 NLSCg = FMg + 23680 -- night loop safe capacity global ("NIGHTCLUBMAXSAFEVALUE")
 NLISg = FMg + 23657 -- night loop income start global ("NIGHTCLUBINCOMEUPTOPOP5")
 NLIEg = FMg + 23676 -- night loop income end global ("NIGHTCLUBINCOMEUPTOPOP100")
-NLCl = 204 + 32 + 1 -- night loop collect local
+NLSt = 204 + 32 + 2 -- night loop type local
+NLCl = 204 + 32 + 19 + 1 -- night loop collect local
 
 -- Special Cargo Variables
 SCVPg = FMg + 15732 	-- special cargo vip price global ("EXEC_CONTRABAND_SALE_VALUE_THRESHOLD1")
@@ -654,32 +654,12 @@ end)
 Salvage:add_sameline()
 Salvage:add_button("Instant Finish", function()
     local salvage_missions = {
-        {
-            script = "fm_content_vehrob_cargo_ship",
-            step1 = 7161 + 1,
-            step2 = 7306 + 1249
-        },
-        {
-            script = "fm_content_vehrob_police",
-            step1 = 8987 + 1,
-            step2 = 9120 + 1305
-        },
-        {
-            script = "fm_content_vehrob_arena",
-            step1 = 7892 + 1,
-            step2 = 8012 + 1314
-        },
-        {
-            script = "fm_content_vehrob_casino_prize",
-            step1 = 9161 + 1,
-            step2 = 9298 + 1258
-        },
-        {
-            script = "fm_content_vehrob_submarine",
-            step1 = 6196 + 1,
-            step2 = 6334 + 1159
-        }
-    }
+		{ script = "fm_content_vehrob_cargo_ship", step1 = 7161 + 1, step2 = 7306 + 1249 },
+		{ script = "fm_content_vehrob_police", step1 = 8987 + 1, step2 = 9120 + 1305 },
+		{ script = "fm_content_vehrob_arena", step1 = 7892 + 1, step2 = 8012 + 1314 },
+		{ script = "fm_content_vehrob_casino_prize", step1 = 9161 + 1, step2 = 9298 + 1258 },
+		{ script = "fm_content_vehrob_submarine", step1 = 6196 + 1, step2 = 6334 + 1159 }
+	}
     
     for _, mission in ipairs(salvage_missions) do
         local value = locals.get_int(mission.script, mission.step1)
@@ -1447,6 +1427,28 @@ local heistCuts = {
     [1182286714] = {-300, 200}
 }
 
+Apartment:add_separator()
+Apartment:add_text("Works only for you. Allows you to get 12 millions bonus for The Pacific Standard Job on hard difficulty.\nEnable before starting the heist. Has a cooldown.")
+
+local apartmentBonus = Apartment:add_checkbox("12mil Bonus")
+local previousState = false
+
+script.register_looped("SN_Apartment_Bonus", function(script)
+    script:yield()
+    local currentState = apartmentBonus:is_enabled()
+    if currentState ~= previousState then
+        stats.set_int(joaat("MPPLY_HEISTFLOWORDERPROGRESS"), currentState and 268435455 or 134217727)
+        stats.set_bool(joaat("MPPLY_AWD_HST_ORDER"), not currentState)
+        stats.set_int(joaat("MPPLY_HEISTTEAMPROGRESSBITSET"), currentState and 268435455 or 134217727)
+        stats.set_bool(joaat("MPPLY_AWD_HST_SAME_TEAM"), not currentState)
+        stats.set_int(joaat("MPPLY_HEISTNODEATHPROGREITSET"), currentState and 268435455 or 134217727)
+        stats.set_bool(joaat("MPPLY_AWD_HST_ULT_CHAL"), not currentState)
+        gui.show_message("12mil Bonus", currentState and "Bonus should've been applied. Don't forget about difficulty" or "Bonus should've been unapplied")
+        previousState = currentState
+    end
+    script:sleep(100)
+end)
+
 Apartment:add_button("3mil Payout",
 function()
 script.run_in_fiber(function(ap)
@@ -1602,12 +1604,9 @@ Bunker:add_button("Unlock All Research", function()
 end)
 Bunker:add_text("Supplies")
 Bunker:add_button("Fast Production", function()
-	script.run_in_fiber(function(script)
-		globals.set_int(BCFp1, 1)
-		globals.set_int(BCFp2, 1)
-		globals.set_int(BCFp3, 1)
-		gui.show_message("Production", "Bunker production speed has been increased, make sure you loop your supplies!")
-	end)
+    globals.set_int(BCFp1, 0)
+    globals.set_int(BCFp2, 1)
+    gui.show_message("Production", "Bunker production speed has been increased, make sure you loop your supplies!")
 end)
 Bunker:add_sameline()
 local bSupplies = Bunker:add_checkbox("Resupply Bunker (Looped)")
@@ -1818,7 +1817,7 @@ local nightCargoDatas = {
 	{ name = "Cash Creation", offset = 6, vars = NHCCg },
 }
 
-Nightclub:add_text("Set Cargo value to $2,00,000")
+Nightclub:add_text("Set Cargo value to $2,000,000")
 for _, nightCargoData in ipairs(nightCargoDatas) do
 	Nightclub:add_button(nightCargoData.name, function()
 		if stats.get_int(MPX() .. "HUB_PROD_TOTAL_" .. nightCargoData.offset) ~= 0 then
@@ -1837,12 +1836,42 @@ function ()
 	globals.set_int(NHSAIg, 27000)
 	globals.set_int(NHPRg, 11475)
 	globals.set_int(NHOPg, 2025)
-	globals.set_int(NHPNCg, 10000)
+	globals.set_int(NHPNCg, 1350)
 	globals.set_int(NHCCg, 4725)
 end
 )
 Nightclub:add_separator()
 Nightclub:add_text("Misc")
+local nightclubPopLock = Nightclub:add_checkbox("Lock Popularity")
+local NPOPULARITY = "TEMP"
+local prevPopState = false
+
+script.register_looped("SN_Nightclub_Lock", function(script)
+    script:yield()
+    local currState = nightclubPopLock:is_enabled()
+    if currState ~= prevPopState then
+        if currState then
+            if NPOPULARITY == "TEMP" then
+                NPOPULARITY = stats.get_int(joaat(MPX() .. "CLUB_POPULARITY"))
+            end
+            gui.show_message("Lock Popularity", "Popularity should've been locked at " .. math.floor(NPOPULARITY / 10) .. "%")
+        else
+            NPOPULARITY = "TEMP"
+            gui.show_message("Lock Popularity", "Popularity should've been unlocked")
+        end
+        prevPopState = currState
+    end
+    if currState and NPOPULARITY ~= "TEMP" then
+        stats.set_int(joaat(MPX() .. "CLUB_POPULARITY"), NPOPULARITY)
+    end
+    script:sleep(1000)
+end)
+
+Nightclub:add_sameline()
+Nightclub:add_button("Max Popularity", function()
+    stats.set_int(joaat(MPX() .. "CLUB_POPULARITY"), 1000)
+    gui.show_message("Max Popularity", "Popularity should've been maximized")
+end)
 Nightclub:add_button("Cooldown Killer",
 function ()
 	NightclubCooldownKiller(true)
@@ -1991,6 +2020,9 @@ script.register_looped("180kTransaction", function(script)
         script:sleep(333)
     end
 end)
+
+EasyMoney:add_separator()
+EasyMoney:add_text("CAUTION: might be unsafe")
 
 -- Miscellaneous --
 local Miscellaneous = Silent:add_tab("Miscellaneous ")
@@ -2932,3 +2964,4 @@ Credits:add_text("Helpers: Rostal")
 Credits:add_text("Helpers: VodisAreThere65715")
 Credits:add_text("Helpers: Someone")
 Credits:add_text("Helpers: Yimura, L7Neg, Loled69, Alestarov, gir489returns, TheKuter, RazorGamerX, USBMenus")
+
