@@ -1,6 +1,8 @@
 # Silent Night
 
-This is an updated version of the Silent Night script for Yim. 
+This is an updated version of the Silent Night script for Yim (Legacy). 
+
+Incompatible with Enhanced due to incomplete V2 Lua API.
 
 ## Installation
 1. Download the `.lua` file from the Releases section.
