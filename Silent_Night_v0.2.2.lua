@@ -2821,7 +2821,7 @@ local function render_weapon_editor()
 end
 
 script.register_looped("Gun Van", function()
-	gun_van_loc = globals.get_int(2652584 + 2706)
+	gun_van_loc = globals.get_int(2652579 + 2706)
 
 	if is_typing then
 		PAD.DISABLE_ALL_CONTROL_ACTIONS(0)
@@ -2859,7 +2859,7 @@ gun_van_tab:add_imgui(function()
 	ImGui.SameLine()
 
 	if ImGui.Button("Set New Gun Van Location") then
-		globals.set_int(2652584 + 2706, selected_loc)
+		globals.set_int(2652579 + 2706, selected_loc)
 	end
 
 	ImGui.SameLine()
@@ -3013,6 +3013,7 @@ Credits:add_text("Helpers: Rostal")
 Credits:add_text("Helpers: VodisAreThere65715")
 Credits:add_text("Helpers: Someone")
 Credits:add_text("Helpers: Yimura, L7Neg, Loled69, Alestarov, gir489returns, TheKuter, RazorGamerX, USBMenus")
+
 
 
 
