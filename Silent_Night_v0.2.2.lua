@@ -1205,6 +1205,7 @@ local cayoApproachVehicles = {
 	{name="Velum", id = 65289},
 	{name="Alkonost", id = 65413},
 	{name="Kosatka", id = 65283},
+	{name="All Ways", id = 65535},
 }
 local cayoWeapons = {
 	{name="Aggressor", id = 1},
@@ -1232,6 +1233,11 @@ for _, cayoPrimaryTarget in ipairs(cayoPrimaryTargets) do
 		stats.set_int(MPX() .. "H4CNF_TARGET", cayoPrimaryTarget.id)
 	end)
 	Cayo:add_sameline()
+end
+Cayo:add_separator()
+local targetNames = {}
+for i, target in ipairs(cayoSecondaryTargets) do
+    table.insert(targetNames, target.name)
 end
 local compoundI = 0
 local islandI = 0
@@ -2984,5 +2990,6 @@ Credits:add_text("Helpers: Rostal")
 Credits:add_text("Helpers: VodisAreThere65715")
 Credits:add_text("Helpers: Someone")
 Credits:add_text("Helpers: Yimura, L7Neg, Loled69, Alestarov, gir489returns, TheKuter, RazorGamerX, USBMenus")
+
 
 
