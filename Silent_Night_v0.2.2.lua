@@ -781,6 +781,16 @@ function()
 		end
 	end
 end)
+Doomsday:add_button("Force Ready", function()
+    script.run_in_fiber(function(script)
+        network.force_script_host("fm_mission_controller")
+        script:sleep(1000)
+        globals.set_int(1882572 + 1 + (0 * 315) + 43 + 11 + 1, 1)
+        globals.set_int(1882572 + 1 + (1 * 315) + 43 + 11 + 2, 1)
+        globals.set_int(1882572 + 1 + (2 * 315) + 43 + 11 + 3, 1)
+        globals.set_int(1882572 + 1 + (3 * 315) + 43 + 11 + 4, 1)
+    end)
+end)
 Doomsday:add_sameline()
 Doomsday:add_button("Instant Finish", function()
     locals.set_int("fm_mission_controller", 19791, 12)
@@ -1084,6 +1094,17 @@ CasinoHeistExtra:add_button("Instant Finish", function()
     end
 end)
 CasinoHeistExtra:add_sameline()
+CasinoHeistExtra:add_button("Force Ready", function()
+    script.run_in_fiber(function(script)
+        network.force_script_host("fm_mission_controller")
+        script:sleep(1000)
+        globals.set_int(1976314 + 1 + (0 * 68) + 7 + 1, 1)
+        globals.set_int(1976314 + 1 + (1 * 68) + 7 + 2, 1)
+        globals.set_int(1976314 + 1 + (2 * 68) + 7 + 3, 1)
+        globals.set_int(1976314 + 1 + (3 * 68) + 7 + 4, 1)
+    end)
+end)
+CasinoHeistExtra:add_sameline()
 CasinoHeistExtra:add_button("Kill Cooldown", function()
     stats.set_int(MPX() .. "H3_COMPLETEDPOSIX", -1)
     stats.set_int("MPPLY_H3_COOLDOWN", -1)
@@ -1116,15 +1137,17 @@ local function CayoCompletePreps()
 	stats.set_int(MPX() .. "H4CNF_APPROACH", -1)
 end
 local function CayoTargetsSetter(cash, weed, coke, gold, where, target, value)
-	stats.set_int(MPX() .. "H4LOOT_CASH_" .. where, cash)
-	stats.set_int(MPX() .. "H4LOOT_CASH_" .. where .. "_SCOPED", cash)
-	stats.set_int(MPX() .. "H4LOOT_WEED_" .. where, weed)
-	stats.set_int(MPX() .. "H4LOOT_WEED_" .. where .. "_SCOPED", weed)
-	stats.set_int(MPX() .. "H4LOOT_COKE_" .. where, coke)
-	stats.set_int(MPX() .. "H4LOOT_COKE_" .. where .. "_SCOPED", coke)
-	stats.set_int(MPX() .. "H4LOOT_GOLD_" .. where, gold)
-	stats.set_int(MPX() .. "H4LOOT_GOLD_" .. where .. "_SCOPED", gold)
-	stats.set_int(MPX() .. "H4LOOT_" .. target .. "_V", value)
+    stats.set_int(MPX() .. "H4LOOT_CASH_" .. where, cash)
+    stats.set_int(MPX() .. "H4LOOT_CASH_" .. where .. "_SCOPED", cash)
+    stats.set_int(MPX() .. "H4LOOT_WEED_" .. where, weed)
+    stats.set_int(MPX() .. "H4LOOT_WEED_" .. where .. "_SCOPED", weed)
+    stats.set_int(MPX() .. "H4LOOT_COKE_" .. where, coke)
+    stats.set_int(MPX() .. "H4LOOT_COKE_" .. where .. "_SCOPED", coke)
+    stats.set_int(MPX() .. "H4LOOT_GOLD_" .. where, gold)
+    stats.set_int(MPX() .. "H4LOOT_GOLD_" .. where .. "_SCOPED", gold)
+    if target ~= "NONE" then
+        stats.set_int(MPX() .. "H4LOOT_" .. target .. "_V", value)
+    end
 end
 local function CayoPaintingsToggler(Enabled)
 	if Enabled then
@@ -1143,38 +1166,26 @@ local function CutsPresetter(global_start, global_finish, cut)
 	end
 end
 local cayoSecondaryTargets = {
-		{ name = "Gold", caps="GOLD", amount={
-			compound ={
-				cash=0, weed=0, coke=0, gold=255
-			},
-			island = {
-				cash=0, weed=0, coke=0, gold=16777215
-			}
-		}, value = 330350},
-		{ name = "Cocaine", caps="COKE",amount={
-			compound ={
-				cash=0, weed=0, coke=255, gold=0
-			},
-			island = {
-				cash=0, weed=0, coke=16777215, gold=0
-		}, value = 200095},
-		{ name = "Meraguina", caps="WEED",amount={
-			compound ={
-				cash=0, weed=255, coke=0, gold=0
-			},
-			island = {
-				cash=0, weed=16777215, coke=0, gold=0
-				}
-		}, value = 147870},
-		{ name = "Cash", caps="CASH",amount={
-			compound ={
-				cash=255, weed=0, coke=0, gold=0
-			},
-			island = {
-				cash=16777215, weed=0, coke=0, gold=0
-			}
-		}, value = 90000}
-	}
+    { name = "None", caps = "NONE", amount = {
+        compound = { cash = 0, weed = 0, coke = 0, gold = 0 },
+        island = { cash = 0, weed = 0, coke = 0, gold = 0 }
+    }, value = 0 },
+    { name = "Gold", caps = "GOLD", amount = {
+        compound = { cash = 0, weed = 0, coke = 0, gold = 255 },
+        island = { cash = 0, weed = 0, coke = 0, gold = 16777215 }
+    }, value = 333333 },
+    { name = "Cocaine", caps = "COKE", amount = {
+        compound = { cash = 0, weed = 0, coke = 255, gold = 0 },
+        island = { cash = 0, weed = 0, coke = 16777215, gold = 0 }
+    }, value = 202500 },
+    { name = "Weed", caps = "WEED", amount = {
+        compound = { cash = 0, weed = 255, coke = 0, gold = 0 },
+        island = { cash = 0, weed = 16777215, coke = 0, gold = 0 }
+    }, value = 135000 },
+    { name = "Cash", caps = "CASH", amount = {
+        compound = { cash = 255, weed = 0, coke = 0, gold = 0 },
+        island = { cash = 16777215, weed = 0, coke = 0, gold = 0 }
+    }, value = 83250 }
 }
 
 local cayoLocations = {
@@ -1222,25 +1233,45 @@ for _, cayoPrimaryTarget in ipairs(cayoPrimaryTargets) do
 	end)
 	Cayo:add_sameline()
 end
-Cayo:add_separator()
-Cayo:add_text("Secondary targets")
-Cayo:add_text("Compound:")
-for _, cayoSecondaryTarget in ipairs(cayoSecondaryTargets) do
-	Cayo:add_button(cayoSecondaryTarget.name,
-	function ()
-		CayoTargetsSetter(cayoSecondaryTarget.amount.compound.cash, cayoSecondaryTarget.amount.compound.weed, cayoSecondaryTarget.amount.compound.coke, cayoSecondaryTarget.amount.compound.gold, "C", cayoSecondaryTarget.caps, cayoSecondaryTarget.value)
-	
-	end)
-	Cayo:add_sameline()
-end
-Cayo:add_text("")
-Cayo:add_text("Island (Buggy!)")
-for _, cayoSecondaryTarget in ipairs(cayoSecondaryTargets) do
-	Cayo:add_button(cayoSecondaryTarget.name,
-	function ()
-		CayoTargetsSetter(cayoSecondaryTarget.amount.island.cash, cayoSecondaryTarget.amount.island.weed, cayoSecondaryTarget.amount.island.coke, cayoSecondaryTarget.amount.island.gold, "I", cayoSecondaryTarget.caps, cayoSecondaryTarget.value)
-	end)
-end
+local compoundI = 0
+local islandI = 0
+Cayo:add_imgui(function()
+    ImGui.Text("Compound Target:")
+	ImGui.SetNextItemWidth(150)
+    local nCompoundI, clickedCompound = ImGui.Combo("##Compound", compoundI, targetNames, #targetNames)
+    if clickedCompound then
+        compoundI = nCompoundI
+        local selected = cayoSecondaryTargets[compoundI + 1]
+
+        CayoTargetsSetter(
+            selected.amount.compound.cash,
+            selected.amount.compound.weed,
+            selected.amount.compound.coke,
+            selected.amount.compound.gold,
+            "C",
+            selected.caps,
+            selected.value
+        )
+    end
+    
+    ImGui.Text("Island Target:")
+	ImGui.SetNextItemWidth(150)
+    local nIslandI, clickedIsland = ImGui.Combo("##Island", islandI, targetNames, #targetNames)
+    if clickedIsland then
+        islandI = nIslandI
+        local selected = cayoSecondaryTargets[islandI + 1]
+        
+        CayoTargetsSetter(
+            selected.amount.island.cash,
+            selected.amount.island.weed,
+            selected.amount.island.coke,
+            selected.amount.island.gold,
+            "I",
+            selected.caps,
+            selected.value
+        )
+    end
+end)
 Cayo:add_text("")
 Cayo:add_text("Add Paintings")
 local addPaintings = Cayo:add_checkbox("Paintings")
@@ -1283,6 +1314,18 @@ function ()
 	locals.set_int("heist_island_planning", CPRSl, 2)
 end
 )
+Cayo:add_sameline()
+Cayo:add_button("Reset Preps", function()
+    stats.set_int(MPX() .. "H4_PROGRESS", 0)
+    stats.set_int(MPX() .. "H4_MISSIONS", 0)
+    stats.set_int(MPX() .. "H4CNF_APPROACH", 0)
+    stats.set_int(MPX() .. "H4CNF_TARGET", -1)
+    stats.set_int(MPX() .. "H4CNF_BS_GEN", 0)
+    stats.set_int(MPX() .. "H4CNF_BS_ENTR", 0)
+    stats.set_int(MPX() .. "H4CNF_BS_ABIL", 0)
+    stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 0)
+    locals.set_int("heist_island_planning", CPRSl, 2)
+end)
 Cayo:add_separator()
 Cayo:add_text("Cuts to All")
 Cayo:add_button("100",
@@ -1354,6 +1397,17 @@ Cayo:add_button("Instant Finish", function()
     locals.set_int("fm_mission_controller_2020", CPXf2, 50)
 end)
 
+Cayo:add_sameline()
+Cayo:add_button("Force Ready", function()
+    script.run_in_fiber(function(script)
+        network.force_script_host("fm_mission_controller_2020")
+        script:sleep(1000)
+        globals.set_int(1979867 + 1 + (0 * 27) + 7 + 1, 1)
+        globals.set_int(1979867 + 1 + (1 * 27) + 7 + 2, 1)
+        globals.set_int(1979867 + 1 + (2 * 27) + 7 + 3, 1)
+        globals.set_int(1979867 + 1 + (3 * 27) + 7 + 4, 1)
+    end)
+end)
 Cayo:add_sameline()
 Cayo:add_button("Kill Cooldown (after solo)", function()
     stats.set_int(MPX() .. "H4_TARGET_POSIX", 1659643454)
@@ -1511,6 +1565,21 @@ Apartment:add_button("Skip Checkpoint", function()
     locals.set_int("fm_mission_controller", AHSo, locals.get_int("fm_mission_controller", AHSo) | (1 << 17))
 end
 )
+Apartment:add_sameline()
+Apartment:add_button("Unlock All Heists", 
+function()
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_0", globals.get_int(AUAJg1))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_0_L", 5)
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_1", globals.get_int(AUAJg2))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_1_L", 5)
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_2", globals.get_int(AUAJg3))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_2_L", 5)
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_3", globals.get_int(AUAJg4))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_3_L", 5)
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_4", globals.get_int(AUAJg5))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_4_L", 5)
+end
+)
 Apartment:add_button("Play the Heist Solo",
 function()
 	if locals.get_int("fmmc_launcher", 20054 + 34) ~= nil then
@@ -1527,20 +1596,16 @@ function()
 	end
 end)
 Apartment:add_sameline()
-Apartment:add_button("Unlock All Heists", 
-function()
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_0", globals.get_int(AUAJg1))
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_0_L", 5)
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_1", globals.get_int(AUAJg2))
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_1_L", 5)
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_2", globals.get_int(AUAJg3))
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_2_L", 5)
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_3", globals.get_int(AUAJg4))
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_3_L", 5)
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_4", globals.get_int(AUAJg5))
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_4_L", 5)
-end
-)
+Apartment:add_button("Force Ready", function()
+    script.run_in_fiber(function(script)
+        network.force_script_host("fm_mission_controller")
+        script:sleep(1000)
+        globals.set_int(2658291 + 1 + (0 * 468) + 270, 6)
+        globals.set_int(2658291 + 1 + (1 * 468) + 270, 6)
+        globals.set_int(2658291 + 1 + (2 * 468) + 270, 6)
+        globals.set_int(2658291 + 1 + (3 * 468) + 270, 6)
+    end)
+end)
 Apartment:add_sameline()
 Apartment:add_button("Instant Finish",
 function()
@@ -2919,4 +2984,5 @@ Credits:add_text("Helpers: Rostal")
 Credits:add_text("Helpers: VodisAreThere65715")
 Credits:add_text("Helpers: Someone")
 Credits:add_text("Helpers: Yimura, L7Neg, Loled69, Alestarov, gir489returns, TheKuter, RazorGamerX, USBMenus")
+
 
