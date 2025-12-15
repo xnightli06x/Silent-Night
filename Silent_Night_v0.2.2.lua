@@ -425,31 +425,54 @@ Heist_Editor = Silent:add_tab("Heist Editor ")
 
 -- Agency tab
 
-local contract_id = {3, 4, 12, 28, 60, 124, 252, 508, 2044, 4095, -1}
-local CONTRACT_ID = {
-    NIGHTCLUB_LEAK = 3,
-    HIGH_SOCIETY_LEAK = 4,
-    SOUTH_CENTRAL_LEAK = 10,
-    DONT_FUCK_WITH_DRE = 11
+local agencyContracts = {
+    {name = "None", index = 3},
+    {name = "Nightclub", index = 4},
+    {name = "Marina", index = 12},
+    {name = "Nightlife Leak", index = 28},
+    {name = "Country Club", index = 60},
+    {name = "Guest List", index = 123},
+    {name = "High Society Leak", index = 254},
+    {name = "Davis", index = 508},
+    {name = "Ballas", index = 1020},
+    {name = "South Central Leak", index = 2044},
+    {name = "Studio Time", index = 2045},
+    {name = "Don't Fuck With Dre", index = 4095}
 }
-local function setAgencyContract(contractId)
-    stats.set_int(MPX() .. "FIXER_STORY_BS", contract_id[contractId])
-end
-local Agency = Heist_Editor:add_tab("Agency ")
 
-Agency:add_button("Nightclub Leak", function() setAgencyContract(CONTRACT_ID.NIGHTCLUB_LEAK) end)
-Agency:add_sameline()
-Agency:add_button("High Society Leak", function() setAgencyContract(CONTRACT_ID.HIGH_SOCIETY_LEAK) end)
-Agency:add_sameline()
-Agency:add_button("South Central Leak", function() setAgencyContract(CONTRACT_ID.SOUTH_CENTRAL_LEAK) end)
-Agency:add_sameline()
-Agency:add_button("Don't Fuck With Dre", function() setAgencyContract(CONTRACT_ID.DONT_FUCK_WITH_DRE) end)
-Agency:add_button("Complete Preps",
-    function()
-        stats.set_int(MPX() .. "FIXER_GENERAL_BS", -1)
-        stats.set_int(MPX() .. "FIXER_COMPLETED_BS", -1)
-        stats.set_int(MPX() .. "FIXER_STORY_COOLDOWN", -1)
-    end)
+local contractNames = {}
+for i, contract in ipairs(agencyContracts) do
+    table.insert(contractNames, contract.name)
+end
+local sContract = 0
+local Agency = Heist_Editor:add_tab("Agency ")
+Agency:add_imgui(function()
+    ImGui.Text("Contract:")
+    ImGui.SetNextItemWidth(200)
+    local nSelected, clicked = ImGui.Combo("##AgencyContract", sContract, contractNames, #contractNames)
+    if clicked then
+        sContract = nSelected
+        local contractD = agencyContracts[sContract + 1]
+        local contractId = contractD.index
+        
+        stats.set_int(MPX() .. "FIXER_STORY_BS", contractId)
+        if contractId < 18 then
+            stats.set_int(MPX() .. "FIXER_STORY_STRAND", 0)
+        elseif contractId < 128 then
+            stats.set_int(MPX() .. "FIXER_STORY_STRAND", 1)
+        elseif contractId < 2044 then
+            stats.set_int(MPX() .. "FIXER_STORY_STRAND", 2)
+        else
+            stats.set_int(MPX() .. "FIXER_STORY_STRAND", -1)
+        end
+    end
+end)
+
+Agency:add_button("Complete Preps", function()
+    stats.set_int(MPX() .. "FIXER_GENERAL_BS", -1)
+    stats.set_int(MPX() .. "FIXER_COMPLETED_BS", -1)
+    stats.set_int(MPX() .. "FIXER_STORY_COOLDOWN", -1)
+end)
 Agency:add_separator()
 Agency:add_text("Money")
 local agencySafe = Agency:add_checkbox("Agency Safe Loop")
@@ -2990,6 +3013,7 @@ Credits:add_text("Helpers: Rostal")
 Credits:add_text("Helpers: VodisAreThere65715")
 Credits:add_text("Helpers: Someone")
 Credits:add_text("Helpers: Yimura, L7Neg, Loled69, Alestarov, gir489returns, TheKuter, RazorGamerX, USBMenus")
+
 
 
 
