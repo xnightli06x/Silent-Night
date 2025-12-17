@@ -31,10 +31,10 @@ GCg = 2685249 + 6615 -- global cut global (value2 = value2 * (num / 100f);)
 
 -- Cayo Perico Heist Variables
 CPRSl = 1568 -- cayo perico reload screen local 
-CPCg1 = 1978755 + 831 + 56 + 1 -- cayo perico player 1 cut global
-CPCg2 = 1978755 + 831 + 56 + 2 -- cayo perico player 2 cut global
-CPCg3 = 1978755 + 831 + 56 + 3 -- cayo perico player 3 cut global
-CPCg4 = 1978755 + 831 + 56 + 4 -- cayo perico player 4 cut global
+CPCg1 = 1978756 + 831 + 56 + 1 -- cayo perico player 1 cut global
+CPCg2 = 1978756 + 831 + 56 + 2 -- cayo perico player 2 cut global
+CPCg3 = 1978756 + 831 + 56 + 3 -- cayo perico player 3 cut global
+CPCg4 = 1978756 + 831 + 56 + 4 -- cayo perico player 4 cut global
 CPBg = FMg + 29211
 CPFHl = 26084  -- cayo perico fingerprint hack local 
 CPPCCl = 32187 + 3 -- cayo perico plasma cutter cut local ("DLC_H4_anims_glass_cutter_Sounds") 
@@ -63,10 +63,10 @@ AHSo = 19791 + 2  -- Apartment heist skip checkpoint
 
 -- Diamond Casino Heist Variables
 DCRBl = 210 -- diamond casino reload board local
-DCCg1 = 1971951 + 1497 + 736 + 92 + 1 -- diamond casino player 1 cut global
-DCCg2 = 1971951 + 1497 + 736 + 92 + 2 -- diamond casino player 2 cut global
-DCCg3 = 1971951 + 1497 + 736 + 92 + 3 -- diamond casino player 3 cut global
-DCCg4 = 1971951 + 1497 + 736 + 92 + 4 -- diamond casino player 4 cut global
+DCCg1 = 1971952 + 1497 + 736 + 92 + 1 -- diamond casino player 1 cut global
+DCCg2 = 1971952 + 1497 + 736 + 92 + 2 -- diamond casino player 2 cut global
+DCCg3 = 1971952 + 1497 + 736 + 92 + 3 -- diamond casino player 3 cut global
+DCCg4 = 1971952 + 1497 + 736 + 92 + 4 -- diamond casino player 4 cut global
 DCCl = FMg +28313  -- Casino_Cut_Lester_offset
 DCCh = FMg+28349-1 --Casino_Cut_Hacker_offset
 DCCd = FMg+28344-1 --Casino_Cut_Driver_offset
@@ -82,6 +82,9 @@ DCXf4 = 19791 + 2686
 DCXf5 = 28412 + 1
 DCXf6 = 31668 + 1 + 68
 
+-- Agency Variables
+AGFl1 = 55789 + 1
+AGFl2 = 55789 + 1776 + 1
 
 -- Bunker Variables
 BUCg1 = FMg + 21018 -- bunker unlocker cooldown global 1 (946764522)
@@ -494,6 +497,13 @@ Agency:add_text("Custom Payout:")
 local agencyPayout = Agency:add_input_int("Payout")
 Agency:add_button("Set Payout", function() globals.set_int(APg, agencyPayout:get_value()) end)
 Agency:add_separator()
+Agency:add_button("Instant Finish", function()
+    script.run_in_fiber(function(script)
+        locals.set_int("fm_mission_controller_2020", AGFl1, 51338752)
+        locals.set_int("fm_mission_controller_2020", AGFl2, 50)
+    end)
+end)
+Agency:add_separator()
 Agency:add_text("After All choices and pressing Complete Preps wait for sometime")
 
 -- Autoshop tab
@@ -808,10 +818,9 @@ Doomsday:add_button("Force Ready", function()
     script.run_in_fiber(function(script)
         network.force_script_host("fm_mission_controller")
         script:sleep(1000)
-        globals.set_int(1882572 + 1 + (0 * 315) + 43 + 11 + 1, 1)
-        globals.set_int(1882572 + 1 + (1 * 315) + 43 + 11 + 2, 1)
-        globals.set_int(1882572 + 1 + (2 * 315) + 43 + 11 + 3, 1)
-        globals.set_int(1882572 + 1 + (3 * 315) + 43 + 11 + 4, 1)
+        for i = 0, 3 do
+            globals.set_int(1882572 + 1 + (i * 315) + 43 + 11 + 1, 1)
+        end
     end)
 end)
 Doomsday:add_sameline()
@@ -1121,10 +1130,9 @@ CasinoHeistExtra:add_button("Force Ready", function()
     script.run_in_fiber(function(script)
         network.force_script_host("fm_mission_controller")
         script:sleep(1000)
-        globals.set_int(1976314 + 1 + (0 * 68) + 7 + 1, 1)
-        globals.set_int(1976314 + 1 + (1 * 68) + 7 + 2, 1)
-        globals.set_int(1976314 + 1 + (2 * 68) + 7 + 3, 1)
-        globals.set_int(1976314 + 1 + (3 * 68) + 7 + 4, 1)
+        for i = 0, 3 do
+            globals.set_int(1976315 + 1 + (i * 68) + 7 + 1, 1)
+        end
     end)
 end)
 CasinoHeistExtra:add_sameline()
@@ -1429,12 +1437,11 @@ end)
 Cayo:add_sameline()
 Cayo:add_button("Force Ready", function()
     script.run_in_fiber(function(script)
-        network.force_script_host("fm_mission_controller_2020")
+        network.force_script_host("fm_mission_controller")
         script:sleep(1000)
-        globals.set_int(1979867 + 1 + (0 * 27) + 7 + 1, 1)
-        globals.set_int(1979867 + 1 + (1 * 27) + 7 + 2, 1)
-        globals.set_int(1979867 + 1 + (2 * 27) + 7 + 3, 1)
-        globals.set_int(1979867 + 1 + (3 * 27) + 7 + 4, 1)
+        for i = 0, 3 do
+            globals.set_int(1979867 + 1 + (i * 27) + 7 + 1, 1)
+        end
     end)
 end)
 Cayo:add_sameline()
@@ -1609,41 +1616,58 @@ function()
     stats.set_int(MPX() .. "HEIST_SAVED_STRAND_4_L", 5)
 end
 )
-Apartment:add_button("Play the Heist Solo",
-function()
-	if locals.get_int("fmmc_launcher", 20054 + 34) ~= nil then
-		if locals.get_int("fmmc_launcher", 20054 + 34) ~= 0 then
-			if locals.get_int("fmmc_launcher", 20054 + 34) > 1 then
-					locals.set_int("fmmc_launcher", 20054 + 15, 1)
-                    globals.set_int(794954 + 4 + 1 + (locals.get_int("fmmc_launcher", 20054 + 34) * 95) + 75, 1)
-			end
-			globals.set_int(4718592 + 3539, 1)
-            globals.set_int(4718592 + 3540, 1)
-            globals.set_int(4718592 + 3542 + 1, 1)
-            globals.set_int(4718592 + 185951 + 1, 0)
-		end
-	end
+local soloLaunchApt = Apartment:add_checkbox("Solo Launch")
+script.register_looped("SoloLaunchApt", function(loop)
+    if script.is_active("fmmc_launcher") then
+        local value = locals.get_int("fmmc_launcher", 20054 + 34)
+        
+        if value ~= 0 then
+            if soloLaunchApt:is_enabled() then
+                if globals.get_int(794954 + 4 + 1 + (value * 95) + 75) > 1 then
+                    globals.set_int(794954 + 4 + 1 + (value * 95) + 75, 1)
+                end
+                
+                if locals.get_int("fmmc_launcher", 20054 + 15) > 1 then
+                    locals.set_int("fmmc_launcher", 20054 + 15, 1)
+                end
+                
+                globals.set_int(4718592 + 3539, 1)
+                globals.set_int(4718592 + 3540, 1)
+                globals.set_int(4718592 + 3542 + 1, 1)
+                globals.set_int(4718592 + 185951 + 1, 0)
+                locals.set_int("fmmc_launcher", 20295, 0)
+                globals.set_int(4718592 + 3536, 1)
+            else
+                local isFleeca = value == 1328892776
+                globals.set_int(794954 + 4 + 1 + (value * 95) + 75, isFleeca and 2 or 4)
+                locals.set_int("fmmc_launcher", 20054 + 15, isFleeca and 2 or 4)
+                globals.set_int(4718592 + 3539, isFleeca and 2 or 4)
+                globals.set_int(4718592 + 3540, isFleeca and 2 or 4)
+                globals.set_int(4718592 + 3542 + 1, 1)
+                globals.set_int(4718592 + 185951 + 1, 0)
+            end
+        end
+    end
+    
+    loop:yield()
 end)
 Apartment:add_sameline()
 Apartment:add_button("Force Ready", function()
     script.run_in_fiber(function(script)
         network.force_script_host("fm_mission_controller")
         script:sleep(1000)
-        globals.set_int(2658291 + 1 + (0 * 468) + 270, 6)
-        globals.set_int(2658291 + 1 + (1 * 468) + 270, 6)
-        globals.set_int(2658291 + 1 + (2 * 468) + 270, 6)
-        globals.set_int(2658291 + 1 + (3 * 468) + 270, 6)
+        for i = 0, 3 do
+            globals.set_int(2658291 + 1 + (i * 468) + 270, 6)
+        end
     end)
 end)
 Apartment:add_sameline()
-Apartment:add_button("Instant Finish",
-function()
+Apartment:add_button("Instant Finish", function()
 	locals.set_int("fm_mission_controller", AIFl3, 12)
 	locals.set_int("fm_mission_controller", AIFl4, 99999)
 	locals.set_int("fm_mission_controller", AIFl5, 99999)
 	locals.set_int("fm_mission_controller", AIFl6, 99999)
-end
-)
+end)
 Apartment:add_sameline()
 Apartment:add_button("Instant Finish (Pacific)", function()
     locals.set_int("fm_mission_controller", 19791 + 1062, 5)
@@ -1651,8 +1675,7 @@ Apartment:add_button("Instant Finish (Pacific)", function()
     locals.set_int("fm_mission_controller", 19791 + 2686, 10000000)
     locals.set_int("fm_mission_controller", 28412 + 1, 99999)
     locals.set_int("fm_mission_controller", 31668 + 1 + 68, 99999)
-end
-)
+end)
 Apartment:add_text("")
 Apartment:add_text("Note: After Clicking Unlock All Heists, restart the game")
 -- Money Tool --
@@ -3013,6 +3036,7 @@ Credits:add_text("Helpers: Rostal")
 Credits:add_text("Helpers: VodisAreThere65715")
 Credits:add_text("Helpers: Someone")
 Credits:add_text("Helpers: Yimura, L7Neg, Loled69, Alestarov, gir489returns, TheKuter, RazorGamerX, USBMenus")
+
 
 
 
