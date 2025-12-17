@@ -498,10 +498,8 @@ local agencyPayout = Agency:add_input_int("Payout")
 Agency:add_button("Set Payout", function() globals.set_int(APg, agencyPayout:get_value()) end)
 Agency:add_separator()
 Agency:add_button("Instant Finish", function()
-    script.run_in_fiber(function(script)
-        locals.set_int("fm_mission_controller_2020", AGFl1, 51338752)
-        locals.set_int("fm_mission_controller_2020", AGFl2, 50)
-    end)
+    locals.set_int("fm_mission_controller_2020", AGFl1, 51338752)
+    locals.set_int("fm_mission_controller_2020", AGFl2, 50)
 end)
 Agency:add_separator()
 Agency:add_text("After All choices and pressing Complete Preps wait for sometime")
@@ -3036,6 +3034,7 @@ Credits:add_text("Helpers: Rostal")
 Credits:add_text("Helpers: VodisAreThere65715")
 Credits:add_text("Helpers: Someone")
 Credits:add_text("Helpers: Yimura, L7Neg, Loled69, Alestarov, gir489returns, TheKuter, RazorGamerX, USBMenus")
+
 
 
 
