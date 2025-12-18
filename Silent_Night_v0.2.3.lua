@@ -1614,40 +1614,20 @@ function()
     stats.set_int(MPX() .. "HEIST_SAVED_STRAND_4_L", 5)
 end
 )
-local soloLaunchApt = Apartment:add_checkbox("Solo Launch")
-script.register_looped("SoloLaunchApt", function(loop)
-    if script.is_active("fmmc_launcher") then
-        local value = locals.get_int("fmmc_launcher", 20054 + 34)
-        
-        if value ~= 0 then
-            if soloLaunchApt:is_enabled() then
-                if globals.get_int(794954 + 4 + 1 + (value * 95) + 75) > 1 then
-                    globals.set_int(794954 + 4 + 1 + (value * 95) + 75, 1)
-                end
-                
-                if locals.get_int("fmmc_launcher", 20054 + 15) > 1 then
-                    locals.set_int("fmmc_launcher", 20054 + 15, 1)
-                end
-                
-                globals.set_int(4718592 + 3539, 1)
-                globals.set_int(4718592 + 3540, 1)
-                globals.set_int(4718592 + 3542 + 1, 1)
-                globals.set_int(4718592 + 185951 + 1, 0)
-                locals.set_int("fmmc_launcher", 20295, 0)
-                globals.set_int(4718592 + 3536, 1)
-            else
-                local isFleeca = value == 1328892776
-                globals.set_int(794954 + 4 + 1 + (value * 95) + 75, isFleeca and 2 or 4)
-                locals.set_int("fmmc_launcher", 20054 + 15, isFleeca and 2 or 4)
-                globals.set_int(4718592 + 3539, isFleeca and 2 or 4)
-                globals.set_int(4718592 + 3540, isFleeca and 2 or 4)
-                globals.set_int(4718592 + 3542 + 1, 1)
-                globals.set_int(4718592 + 185951 + 1, 0)
-            end
-        end
-    end
-    
-    loop:yield()
+Apartment:add_button("Play the Heist Solo",
+function()
+	if locals.get_int("fmmc_launcher", 20054 + 34) ~= nil then
+		if locals.get_int("fmmc_launcher", 20054 + 34) ~= 0 then
+			if locals.get_int("fmmc_launcher", 20054 + 34) > 1 then
+					locals.set_int("fmmc_launcher", 20054 + 15, 1)
+                    globals.set_int(794954 + 4 + 1 + (locals.get_int("fmmc_launcher", 20054 + 34) * 95) + 75, 1)
+			end
+			globals.set_int(4718592 + 3539, 1)
+            globals.set_int(4718592 + 3540, 1)
+            globals.set_int(4718592 + 3542 + 1, 1)
+            globals.set_int(4718592 + 185951 + 1, 0)
+		end
+	end
 end)
 Apartment:add_sameline()
 Apartment:add_button("Force Ready", function()
@@ -3034,6 +3014,7 @@ Credits:add_text("Helpers: Rostal")
 Credits:add_text("Helpers: VodisAreThere65715")
 Credits:add_text("Helpers: Someone")
 Credits:add_text("Helpers: Yimura, L7Neg, Loled69, Alestarov, gir489returns, TheKuter, RazorGamerX, USBMenus")
+
 
 
 
