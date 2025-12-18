@@ -1438,7 +1438,7 @@ Cayo:add_button("Force Ready", function()
         network.force_script_host("fm_mission_controller_2020")
         script:sleep(1000)
         for i = 0, 3 do
-            globals.set_int(1979867 + 1 + (i * 27) + 7 + 1, 1)
+            globals.set_int(1979868 + 1 + (i * 27) + 7 + 1, 1)
         end
     end)
 end)
@@ -3034,6 +3034,7 @@ Credits:add_text("Helpers: Rostal")
 Credits:add_text("Helpers: VodisAreThere65715")
 Credits:add_text("Helpers: Someone")
 Credits:add_text("Helpers: Yimura, L7Neg, Loled69, Alestarov, gir489returns, TheKuter, RazorGamerX, USBMenus")
+
 
 
 
