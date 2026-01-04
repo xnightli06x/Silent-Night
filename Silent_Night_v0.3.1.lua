@@ -65,6 +65,7 @@ AFPl = 9815 -- apartment pacific hack local
 AHSo = 19791 + 2  -- Apartment heist skip checkpoint
 AHRg = 1935571
 ACDg = 1877158
+AHDg = 4718592 + 3538
 
 -- Diamond Casino Heist Variables
 DCRBl = 210 -- diamond casino reload board local
@@ -171,7 +172,6 @@ GVTDg = FMg + 33295
 
 --Casino
 CRS = 1372
-CCB = 1971515
 
 local salvage_missions = {
 	{ script = "fm_content_vehrob_cargo_ship", step1 = 7185 + 1, step2 = 7330 + 1249 },
@@ -228,6 +228,30 @@ local AutoShopContracts = {
     { name = "Agency Deal", index = 5 },
     { name = "Lost Contract", index = 6 },
     { name = "Data Contract", index = 7 }
+}
+
+local DiamondCasinoCrewCut = {
+    { tunable = "CH_LESTER_CUT", default = 5 },
+    { tunable = "HEIST3_PREPBOARD_GUNMEN_KARL_CUT", default = 5 },
+    { tunable = "HEIST3_PREPBOARD_GUNMEN_GUSTAVO_CUT", default = 9 },
+    { tunable = "HEIST3_PREPBOARD_GUNMEN_CHARLIE_CUT", default = 7 },
+    { tunable = "HEIST3_PREPBOARD_GUNMEN_CHESTER_CUT", default = 10 },
+    { tunable = "HEIST3_PREPBOARD_GUNMEN_PATRICK_CUT", default = 8 },
+    { tunable = "HEIST3_DRIVERS_KARIM_CUT", default = 5 },
+    { tunable = "HEIST3_DRIVERS_TALIANA_CUT", default = 7 },
+    { tunable = "HEIST3_DRIVERS_EDDIE_CUT", default = 9 },
+    { tunable = "HEIST3_DRIVERS_ZACH_CUT", default = 6 },
+    { tunable = "HEIST3_DRIVERS_CHESTER_CUT", default = 10 },
+    { tunable = "HEIST3_HACKERS_RICKIE_CUT", default = 3 },
+    { tunable = "HEIST3_HACKERS_CHRISTIAN_CUT", default = 7 },
+    { tunable = "HEIST3_HACKERS_YOHAN_CUT", default = 5 },
+    { tunable = "HEIST3_HACKERS_AVI_CUT", default = 10 },
+    { tunable = "HEIST3_HACKERS_PAIGE_CUT", default = 9 }
+}
+
+local CayoPericoCrewCut = {
+    { tunable = "IH_DEDUCTION_PAVEL_CUT", default = -0.02 },
+    { tunable = "IH_DEDUCTION_FENCING_FEE", default = -0.1 }
 }
 
 local function SkipCutscene()
@@ -897,8 +921,8 @@ Doomsday:add_button("Force Ready", function()
     script.run_in_fiber(function(script)
         network.force_script_host("fm_mission_controller")
         script:sleep(1000)
-        for i = 0, 3 do
-            globals.set_int(1882572 + 1 + (i * 315) + 43 + 11 + 1, 1)
+        for i = 1, 4 do
+            globals.set_int(1882572 + 1 + ((i - 1) * 315) + 43 + 11 + i, 1)
         end
         gui.show_message("Doomsday Heist", "Everyone should've been forced ready")
     end)
@@ -1140,6 +1164,19 @@ function ()
 end
 )
 local CasinoHeistExtra = CasinoHeist:add_tab("Extras ")
+CasinoHeistExtra:add_text("Make Lester, Driver, Hacker, and Gunman cut to 0%")
+local casinoCrewCuts = CasinoHeistExtra:add_checkbox("Remove Crew Cuts")
+script.register_looped("SN_DiamondCasino_Crew", function()
+    local remove = casinoCrewCuts:is_enabled()
+    for _, cut in ipairs(DiamondCasinoCrewCut) do
+        if remove then
+            tunables.set_int(cut.tunable, 0)
+        else
+            tunables.set_int(cut.tunable, cut.default)
+        end
+    end
+end)
+CasinoHeistExtra:add_separator()
 CasinoHeistExtra:add_text("Hacks")
 local casinoAutograbber = CasinoHeistExtra:add_checkbox("Autograbber")
 script.register_looped("casinoAg", function(script)
@@ -1216,8 +1253,8 @@ CasinoHeistExtra:add_button("Force Ready", function()
     script.run_in_fiber(function(script)
         network.force_script_host("fm_mission_controller")
         script:sleep(1000)
-        for i = 0, 3 do
-            globals.set_int(1976315 + 1 + (i * 68) + 7 + 1, 1)
+        for i = 1, 4 do
+            globals.set_int(1976315 + 1 + ((i - 1) * 68) + 7 + i, 1)
         end
         gui.show_message("Diamond Casino Heist", "Everyone should've been forced ready")
     end)
@@ -1478,6 +1515,19 @@ Cayo:add_button("Reset Preps", function()
     locals.set_int("heist_island_planning", CPRSl, 2)
 end)
 Cayo:add_separator()
+Cayo:add_text("Removes fencing fee and Pavel's cut")
+local cayoCrewCuts = Cayo:add_checkbox("Remove Crew Cuts")
+script.register_looped("SN_CayoPerico_Crew", function()
+    local remove = cayoCrewCuts:is_enabled()
+    for _, cut in ipairs (CayoPericoCrewCut) do
+        if remove then
+            tunables.set_float(cut.tunable, 0)
+        else
+            tunables.set_float(cut.tunable, cut.default)
+        end
+    end
+end)
+Cayo:add_separator()
 Cayo:add_text("Cuts to All")
 Cayo:add_button("100",
 function ()
@@ -1559,8 +1609,8 @@ Cayo:add_button("Force Ready", function()
     script.run_in_fiber(function(script)
         network.force_script_host("fm_mission_controller_2020")
         script:sleep(1000)
-        for i = 0, 3 do
-            globals.set_int(1979868 + 1 + (i * 27) + 7 + 1, 1)
+        for i = 1, 4 do
+            globals.set_int(1979868 + 1 + ((i - 1) * 27) + 7 + i, 1)
         end
         gui.show_message("Cayo Perico Heist", "Everyone should've been forced ready")
     end)
@@ -1670,21 +1720,12 @@ script.register_looped("SN_Apartment_Bonus", function(script)
 end)
 
 Apartment:add_separator()
-local difficultyNames = {"Easy", "Normal", "Hard"}
 local difficultyKeys = {"easy", "normal", "hard"}
-local sDifficulty = 1
-Apartment:add_imgui(function()
-    ImGui.Text("Heist Difficulty:")
-    ImGui.SetNextItemWidth(150)
-    local nIndex, changed = ImGui.Combo("##Difficulty", sDifficulty, difficultyNames, #difficultyNames)
-    if changed then
-        sDifficulty = nIndex
-    end
-end)
 Apartment:add_button("3mil Payout", function()
     script.run_in_fiber(function(ap)
         local key = globals.get_int(ACDg + (PLAYER.PLAYER_ID() * 77) + 24 + 2)
-        local difficulty = difficultyKeys[sDifficulty + 1]
+        local difficultyG = globals.get_int(AHDg)
+        local difficulty = difficultyKeys[difficultyG + 1]
         local cuts = heistCuts[difficulty][key]
         if cuts then
             globals.set_int(ACg1, 100 - (cuts[2] * locals.get_int("fmmc_launcher", HGGs1)))
@@ -1698,7 +1739,7 @@ Apartment:add_button("3mil Payout", function()
             PAD.SET_CONTROL_VALUE_NEXT_FRAME(2, 202, 1)
             ap:sleep(1000)
             globals.set_int(ACg5, -1 * (-100 + cuts[1]) / 2)
-			gui.show_message("Apartment Heist", "Cuts should've been applied")
+            gui.show_message("Apartment Heist", "Cuts should've been applied")
         end
     end)
 end)
@@ -1798,8 +1839,8 @@ Apartment:add_button("Force Ready", function()
     script.run_in_fiber(function(script)
         network.force_script_host("fm_mission_controller")
         script:sleep(1000)
-        for i = 0, 3 do
-            globals.set_int(2658291 + 1 + (i * 468) + 270, 6)
+        for i = 1, 4 do
+            globals.set_int(2658291 + 1 + ((i - 1) * 468) + 270, 6)
         end
         gui.show_message("Apartment Heist", "Everyone should've been forced ready")
     end)
@@ -3278,3 +3319,4 @@ NoNeed:add_text("Note: Do that outside Bail Office")
 -- Credits --
 local Credits = Silent:add_tab("Credits ")
 Credits:add_text("Original script dev: SilentSalo")
+
