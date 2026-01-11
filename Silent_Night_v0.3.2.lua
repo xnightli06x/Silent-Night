@@ -1233,6 +1233,7 @@ SN_CasinoHeist:add_imgui(function()
     end
 end)
 
+SN_CasinoHeist:add_separator()
 SN_CasinoHeist:add_button("Apply & Complete Preps", function()
     local approach = diamondApproachList[diamondApproachIndex + 1].index
     local gunman = diamondGunmanList[diamondGunmanIndex + 1].index
@@ -1267,12 +1268,6 @@ SN_CasinoHeist:add_button("Apply & Complete Preps", function()
     stats.set_int(MPX() .. "H3OPT_BITSET1", -1)
     stats.set_int(MPX() .. "H3OPT_COMPLETEDPOSIX", -1)
     locals.set_int("gb_casino_heist_planning", DCRBl, 2)
-    gui.show_message("Diamond Casino Heist", "Preps should've been completed")
-end)
-
-SN_CasinoHeist:add_separator()
-SN_CasinoHeist:add_button("Complete Preps", function()
-    CasinoCompletePreps()
     gui.show_message("Diamond Casino Heist", "Preps should've been completed")
 end)
 SN_CasinoHeist:add_sameline()
@@ -1759,6 +1754,7 @@ SN_Cayo:add_imgui(function()
     end
 end)
 
+SN_Cayo:add_separator()
 SN_Cayo:add_button("Apply & Complete Preps", function()
     local difficulty = CayoPericoDifficulties[cayoDifficultyIndex + 1].index
     local approach = cayoApproachList[cayoApproachIndex + 1].index
@@ -3657,7 +3653,7 @@ function ()
 	stats.set_int(MPX() .. "BAIL_PRISONER_POSIX2", 0)
 end)
 SN_NoNeed:add_text("Note: Do that outside Bail Office")
-			
+
 -- Credits --
 local SN_Credits = Silent:add_tab("Credits ")
 SN_Credits:add_text("Original script dev: SilentSalo")
