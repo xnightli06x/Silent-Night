@@ -6,7 +6,6 @@ end
 
 -- Free Mode Global Variables
 FMg = 262145 -- free mode global ("CASH_MULTIPLIER")
-APg = FMg + 31084 -- agency payout global ("FIXER_FINALE_LEADER_CASH_REWARD")
 XMg = FMg + 1 -- xp multiplier global ("XP_MULTIPLIER")
 CSg1    = 1575042 						-- change session (type) 1 					// Guide:   NETWORK::UGC_SET_USING_OFFLINE_CONTENT(false);
 CSg2    = 1574589 						-- change session (switch) 2 				// Guide:   MP_POST_MATCH_TRANSITION_SCENE
@@ -15,10 +14,6 @@ CSg3    = 1574589 + 2 					-- change session (quit) 3 					// Guide:   MP_POST_M
 ASIFl1 = 55789 + 1 -- auto shop instant finish local 1 
 ASIFl2 = 55789 + 1776 + 1 -- auto shop finish local 2 
 ASRBl = 406 -- auto shop reload board local 
-ASPg1 = FMg + 30338 + 1 -- auto shop payout global 1 ("TUNER_ROBBERY_LEADER_CASH_REWARD0")
-ASPg2 = FMg + 30338 + 8 -- auto shop payout global 2 ("TUNER_ROBBERY_LEADER_CASH_REWARD7")
-ASFg = FMg + 30334 -- auto shop fee global ("TUNER_ROBBERY_CONTACT_FEE")
-ASCKg = FMg + 30357 -- auto shop cooldown global ("TUNER_ROBBERY_COOLDOWN_TIME")
 
 
 -- Doomsday Heist Variables
@@ -53,6 +48,11 @@ ACg2 = 1935536 + 1 + 2 -- global apartment player 2 cut global
 ACg3 = 1935536 + 1 + 3 -- global apartment player 3 cut global
 ACg4 = 1935536 + 1 + 4 -- global apartment player 4 cut global
 ACg5 = 1937504 + 3008 + 1 -- local apartment player 1 cut global
+AUAJg1 = FMg + 9184 -- apartment unlock all jobs global 1 ("ROOT_ID_HASH_THE_FLECCA_JOB")
+AUAJg2 = FMg + 9189 -- apartment unlock all jobs global 2 ("ROOT_ID_HASH_THE_PRISON_BREAK")
+AUAJg3 = FMg + 9196 -- apartment unlock all jobs global 3 ("ROOT_ID_HASH_THE_HUMANE_LABS_RAID")
+AUAJg4 = FMg + 9202 -- apartment unlock all jobs global 4 ("ROOT_ID_HASH_SERIES_A_FUNDING")
+AUAJg5 = FMg + 9208 -- apartment unlock all jobs global 5 ("ROOT_ID_HASH_THE_PACIFIC_STANDARD_JOB")
 AIFl1 = 19791 -- apartment instant finish local 1
 AIFl2 = 19791 + 1062 -- apartment instant finish local 2
 AIFl3 = 19791 + 1740 + 1 -- apartment instant finish local 3 
@@ -99,12 +99,6 @@ AGFl1 = 55789 + 1
 AGFl2 = 55789 + 1776 + 1
 
 -- Bunker Variables
-BUCg1 = FMg + 21018 -- bunker unlocker cooldown global 1 (946764522)
-BUCg2 = FMg + 21264 -- bunker unlocker cooldown global 2 ("GR_RESEARCH_CAPACITY")
-BUCg3 = FMg + 21265 -- bunker unlocker cooldown global 3 ("GR_RESEARCH_PRODUCTION_TIME")
-BUCg4 = FMg + 21266 -- bunker unlocker cooldown global 4 ("GR_RESEARCH_UPGRADE_EQUIPMENT_REDUCTION_TIME")
-BUAg1 = FMg + 21268 -- bunker unlocker additional global 1 (1485279815)
-BUAg2 = FMg + 21269 -- bunker unlocker additional global 2 (2041812011)
 GSIg = 1673807 + 1 + 5 		-- get supplies instantly global ("OR_PSUP_DEL)
 BCISl = 1266 + 774 	-- bunker crash instant sell local
 BCFp1 = 2708790 + 1 + 5 * 2 -- bunker fast production
@@ -116,7 +110,7 @@ HCVISl1 = 1989 + 1078 -- hangar cargo vip instant sell local 1
 HCVISl2 = 1989 + 1035 -- hangar cargo vip instant sell local 2
 
 -- Nightclub Variables
-NLSCg = FMg + 23680 -- night loop safe capacity global ("NIGHTCLUBMAXSAFEVALUE")
+NLSCg = FMg + 23769 -- night loop safe capacity global ("NIGHTCLUBMAXSAFEVALUE")
 NLISg = FMg + 23746 -- night loop income start global ("NIGHTCLUBINCOMEUPTOPOP5")
 NLIEg = FMg + 23765 -- night loop income end global ("NIGHTCLUBINCOMEUPTOPOP100")
 NLCl = 206 + 32 + 19 + 1 -- night loop collect local
@@ -124,30 +118,8 @@ NLTl = 206 + 32 + 2 -- night safe type local
 NCVg = 1845250
 
 -- Special Cargo Variables
-SCVCKg1 = FMg + 15499 	-- special cargo vip cooldown global 1 ("EXEC_BUY_COOLDOWN")
-SCVCKg2 = FMg + 15500 	-- special cargo vip cooldown global 2 ("EXEC_SELL_COOLDOWN")
 SCVMTl = 567 + 7 		-- special cargo vip mission type local
 SCVISl = 567 + 1 		-- special cargo vip instant sell local
-
-
--- Dripfeed Vehicles Variables
-EDVg1 = FMg + 35629 -- enable dripfeed vehicles global 1 ("ENABLE_VEHICLE_ENVISAGE")
-EDVg2 = FMg + 35630 -- enable dripfeed vehicles global 2 ("ENABLE_VEHICLE_EUROSX32")
-EDVg3 = FMg + 35631 -- enable dripfeed vehicles global 3 ("ENABLE_VEHICLE_POLIMPALER5")
-EDVg4 = FMg + 35632 -- enable dripfeed vehicles global 4 ("ENABLE_VEHICLE_POLGREENWOOD")
-BEDVg5 = 2707347 -- enable dripfeed vehicles global 5 ("Bypass")
-EDVg5 = FMg + 35633 -- enable dripfeed vehicles global 6 ("ENABLE_VEHICLE_PIPISTRELLO")
-EDVg6 = FMg + 35634 -- enable dripfeed vehicles global 6 ("ENABLE_VEHICLE_POLIMPALER6")
-EDVg7 = FMg + 35635 -- enable dripfeed vehicles global 7 ("ENABLE_VEHICLE_CASTIGATOR")
-EDVg8 = FMg + 35636 -- enable dripfeed vehicles global 8 ("ENABLE_VEHICLE_DOMINATOR10")
-EDVg9 = FMg + 35637 -- enable dripfeed vehicles global 9 ("ENABLE_VEHICLE_VORSCHLAGHAMMER")
-EDVg10 = FMg + 35638 -- enable dripfeed vehicles global 10 ("ENABLE_VEHICLE_PARAGON3")
-EDVg11 = FMg + 35639 -- enable dripfeed vehicles global 11 ("ENABLE_VEHICLE_POLDORADO")
-EDVg12 = FMg + 35640 -- enable dripfeed vehicles global 12 ("ENABLE_VEHICLE_POLDOMINATOR10")
-EDVg13 = FMg + 35641 -- enable dripfeed vehicles global 13 ("ENABLE_VEHICLE_NIOBE")
-EDVg14 = FMg + 35642 -- enable dripfeed vehicles global 14 ("ENABLE_VEHICLE_COQUETTE5")
-EDVg15 = FMg + 35643 -- enable dripfeed vehicles global 15 ("ENABLE_VEHICLE_PIZZABOY")
-EVg1 = FMg + 34323 -- enables dripfeed vehicles ("ENABLE_VEHICLE_EXEMPLAR")
 
 -- MC Business Variables
 MCPwv = FMg + 17412  
@@ -158,237 +130,19 @@ MCPfakeV = FMg + 17414
 MCPacidV = FMg + 17413
 
 -- Collectibles Variables
-CUg = 2708410 -- collectibles unlocker global ("cellphone_badger")
+CUg = 2709274 -- collectibles unlocker global ("cellphone_badger")
 SJo = 216 -- signal jammers offset
 
 -- Salvage Yard Variables
 SYRl1 = 535
 
 --GUN VAN VARIABLES
-GVADg = FMg + 33303
-GVWDg = FMg + 33284
-GVTDg = FMg + 33295
+GVADg = FMg + 33391
+GVWDg = FMg + 33372
+GVTDg = FMg + 33383
 
 --Casino
 CRS = 1372
-
-local SalvageYard = {
-    robberies = {
-        { name = "Cargo Ship", index = 0 },
-        { name = "Gangbanger", index = 1 },
-        { name = "Duggan", index = 2 },
-        { name = "Podium", index = 3 },
-        { name = "McTony", index = 4 }
-    },
-    vehicles = {
-        { name = "LM87", index = 1 },
-        { name = "Cinquemila", index = 2 },
-        { name = "Autarch", index = 3 },
-        { name = "Tigon", index = 4 },
-        { name = "Champion", index = 5 },
-        { name = "10F", index = 6 },
-        { name = "SM722", index = 7 },
-        { name = "Omnis e-GT", index = 8 },
-        { name = "Growler", index = 9 },
-        { name = "Deity", index = 10 },
-        { name = "Itali RSX", index = 11 },
-        { name = "Coquette D10", index = 12 },
-        { name = "Jubilee", index = 13 },
-        { name = "Astron", index = 14 },
-        { name = "Comet S2 Cabr.", index = 15 },
-        { name = "Torero", index = 16 },
-        { name = "Cheetah Classic", index = 17 },
-        { name = "Turismo Classic", index = 18 },
-        { name = "Infernus Classic", index = 19 },
-        { name = "Stafford", index = 20 },
-        { name = "GT500", index = 21 },
-        { name = "Viseris", index = 22 },
-        { name = "Mamba", index = 23 },
-        { name = "Coquette Black.", index = 24 },
-        { name = "Stinger GT", index = 25 },
-        { name = "Z-Type", index = 26 },
-        { name = "Broadway", index = 27 },
-        { name = "Vigero ZX", index = 28 },
-        { name = "Buffalo STX", index = 29 },
-        { name = "Ruston", index = 30 },
-        { name = "Gauntl. Hellfire", index = 31 },
-        { name = "Dominator GTT", index = 32 },
-        { name = "Roosevelt Valor", index = 33 },
-        { name = "Swinger", index = 34 },
-        { name = "Stirling GT", index = 35 },
-        { name = "Omnis", index = 36 },
-        { name = "Tropos Rallye", index = 37 },
-        { name = "Jugular", index = 38 },
-        { name = "Patriot Mil-Spec", index = 39 },
-        { name = "Toros", index = 40 },
-        { name = "Caracara 4x4", index = 41 },
-        { name = "Sentinel Classic", index = 42 },
-        { name = "Weevil", index = 43 },
-        { name = "Blista Kanjo", index = 44 },
-        { name = "Eudora", index = 45 },
-        { name = "Kamacho", index = 46 },
-        { name = "Hellion", index = 47 },
-        { name = "Ellie", index = 48 },
-        { name = "Hermes", index = 49 },
-        { name = "Hustler", index = 50 },
-        { name = "Turismo Om.", index = 51 },
-        { name = "Buffalo EVX", index = 52 },
-        { name = "Itali GTO St.", index = 53 },
-        { name = "Virtue", index = 54 },
-        { name = "Ignus", index = 55 },
-        { name = "Zentorno", index = 56 },
-        { name = "Neon", index = 57 },
-        { name = "Furia", index = 58 },
-        { name = "Zorrusso", index = 59 },
-        { name = "Thrax", index = 60 },
-        { name = "Vagner", index = 61 },
-        { name = "Panthere", index = 62 },
-        { name = "Itali GTO", index = 63 },
-        { name = "S80RR", index = 64 },
-        { name = "Tyrant", index = 65 },
-        { name = "Entity MT", index = 66 },
-        { name = "Torero XO", index = 67 },
-        { name = "Neo", index = 68 },
-        { name = "Corsita", index = 69 },
-        { name = "Paragon R", index = 70 },
-        { name = "Franken Stange", index = 71 },
-        { name = "Comet Safari", index = 72 },
-        { name = "FR36", index = 73 },
-        { name = "Hotring Everon", index = 74 },
-        { name = "Komoda", index = 75 },
-        { name = "Tailgater S", index = 76 },
-        { name = "Jester Classic", index = 77 },
-        { name = "Jester RR", index = 78 },
-        { name = "Euros", index = 79 },
-        { name = "ZR350", index = 80 },
-        { name = "Cypher", index = 81 },
-        { name = "Dominator ASP", index = 82 },
-        { name = "Baller ST-D", index = 83 },
-        { name = "Casco", index = 84 },
-        { name = "Drift Yosemite", index = 85 },
-        { name = "Everon", index = 86 },
-        { name = "Penumbra FF", index = 87 },
-        { name = "V-STR", index = 88 },
-        { name = "Dominator GT", index = 89 },
-        { name = "Schlagen GT", index = 90 },
-        { name = "Cavalcade XL", index = 91 },
-        { name = "Clique", index = 92 },
-        { name = "Boor", index = 93 },
-        { name = "Sugoi", index = 94 },
-        { name = "Greenwood", index = 95 },
-        { name = "Brigham", index = 96 },
-        { name = "Issi Rally", index = 97 },
-        { name = "Seminole Fr.", index = 98 },
-        { name = "Kanjo SJ", index = 99  },
-        { name = "Previon", index = 100 }
-    },
-    modifications = {
-        { name = "Version 1", index = 0 },
-        { name = "Version 2", index = 1 },
-        { name = "Version 3", index = 2 },
-        { name = "Version 4", index = 3 },
-        { name = "Version 5", index = 4 },
-    },
-    keeps = {
-        { name = "Can't Claim", index = 0 },
-        { name = "Can Claim", index = 1 }
-    },
-    tunables = {
-        robbery_slot1_type = 1152433341,
-        robbery_slot2_type = 852564222,
-        robbery_slot3_type = 552662330,
-        vehicle_slot1_type = -1012732012,
-        vehicle_slot1_value = -1699398139,
-        vehicle_slot1_cankeep = -1700733442,
-        vehicle_slot2_type = 1366330161,
-        vehicle_slot2_value = -1997104504,
-        vehicle_slot2_cankeep = -1547046832,
-        vehicle_slot3_type = 1806057372,
-        vehicle_slot3_value = -1704051341,
-        vehicle_slot3_cankeep = 1830093543,
-        cooldown_weekly = "SALV23_VEH_ROBBERY_WEEK_ID"
-    },
-    salvage_missions = {
-        { script = "fm_content_vehrob_cargo_ship", step1 = 7185 + 1, step2 = 7330 + 1249 },
-        { script = "fm_content_vehrob_police", step1 = 9011 + 1, step2 = 9144 + 1305 },
-        { script = "fm_content_vehrob_arena", step1 = 7912 + 1, step2 = 8032 + 1314 },
-        { script = "fm_content_vehrob_casino_prize", step1 = 9191 + 1, step2 = 9328 + 1258 },
-        { script = "fm_content_vehrob_submarine", step1 = 6218 + 1, step2 = 6356 + 1159 },
-    },
-}
-
-local CasinoPrizes = {
-    { name = "Clothing 1", index = 0 },
-    { name = "Clothing 2", index = 8 },
-    { name = "Clothing 3", index = 12 },
-    { name = "2,500 RP", index = 1 },
-    { name = "5,000 RP", index = 5 },
-    { name = "7,500 RP", index = 9 },
-    { name = "10,000 RP", index = 13 },
-    { name = "15,000 RP", index = 17 },
-    { name = "$20,000", index = 2 },
-    { name = "$30,000", index = 6 },
-    { name = "$40,000", index = 14 },
-    { name = "$50,000", index = 19 },
-    { name = "10,000 Chips", index = 3 },
-    { name = "15,000 Chips", index = 7 },
-    { name = "20,000 Chips", index = 10 },
-    { name = "25,000 Chips", index = 15 },
-    { name = "Discount", index = 4 },
-    { name = "Mystery", index = 11 },
-    { name = "Vehicle", index = 18 }
-}
-
-local AgencyContracts = {
-    {name = "None", index = 3},
-    {name = "Nightclub", index = 4},
-    {name = "Marina", index = 12},
-    {name = "Nightlife Leak", index = 28},
-    {name = "Country Club", index = 60},
-    {name = "Guest List", index = 123},
-    {name = "High Society Leak", index = 254},
-    {name = "Davis", index = 508},
-    {name = "Ballas", index = 1020},
-    {name = "South Central Leak", index = 2044},
-    {name = "Studio Time", index = 2045},
-    {name = "Don't Fuck With Dre", index = 4095}
-}
-
-local AutoShopContracts = {
-    { name = "None", index = -1 },
-    { name = "Union Deposit.", index = 0 },
-    { name = "Superdol. Deal", index = 1 },
-    { name = "Bank Contract", index = 2 },
-    { name = "ECU Job", index = 3 },
-    { name = "Prison Contrac.", index = 4 },
-    { name = "Agency Deal", index = 5 },
-    { name = "Lost Contract", index = 6 },
-    { name = "Data Contract", index = 7 }
-}
-
-local DiamondCasinoCrewCut = {
-    { tunable = "CH_LESTER_CUT", default = 5 },
-    { tunable = "HEIST3_PREPBOARD_GUNMEN_KARL_CUT", default = 5 },
-    { tunable = "HEIST3_PREPBOARD_GUNMEN_GUSTAVO_CUT", default = 9 },
-    { tunable = "HEIST3_PREPBOARD_GUNMEN_CHARLIE_CUT", default = 7 },
-    { tunable = "HEIST3_PREPBOARD_GUNMEN_CHESTER_CUT", default = 10 },
-    { tunable = "HEIST3_PREPBOARD_GUNMEN_PATRICK_CUT", default = 8 },
-    { tunable = "HEIST3_DRIVERS_KARIM_CUT", default = 5 },
-    { tunable = "HEIST3_DRIVERS_TALIANA_CUT", default = 7 },
-    { tunable = "HEIST3_DRIVERS_EDDIE_CUT", default = 9 },
-    { tunable = "HEIST3_DRIVERS_ZACH_CUT", default = 6 },
-    { tunable = "HEIST3_DRIVERS_CHESTER_CUT", default = 10 },
-    { tunable = "HEIST3_HACKERS_RICKIE_CUT", default = 3 },
-    { tunable = "HEIST3_HACKERS_CHRISTIAN_CUT", default = 7 },
-    { tunable = "HEIST3_HACKERS_YOHAN_CUT", default = 5 },
-    { tunable = "HEIST3_HACKERS_AVI_CUT", default = 10 },
-    { tunable = "HEIST3_HACKERS_PAIGE_CUT", default = 9 }
-}
-
-local CayoPericoCrewCut = {
-    { tunable = "IH_DEDUCTION_PAVEL_CUT", default = -0.02 },
-    { tunable = "IH_DEDUCTION_FENCING_FEE", default = -0.1 }
-}
 
 local function SkipCutscene()
     script.run_in_fiber(function(script)
@@ -473,14 +227,16 @@ local function stats_set_packed_bools(packed_bool_start, packed_bool_finish, boo
 end
 
 local function changeSession(session)
-	globals.set_int(CSg1, session)
-	if session == -1 then
-		globals.set_int(CSg3, -1)
-	end
-	sleep(0.5)
-	globals.set_int(CSg2, 1)
-	sleep(0.5)
-	globals.set_int(CSg2, 0)
+    script.run_in_fiber(function(script)
+        globals.set_int(CSg1, session)
+        if session == -1 then
+            globals.set_int(CSg3, -1)
+        end
+        script:sleep(1000)
+        globals.set_int(CSg2, 1)
+        script:sleep(1000)
+        globals.set_int(CSg2, 0)
+    end)
 end
 local function globals_set_ints(global_start, global_finish, step, value)
 	for i = global_start, global_finish, step do
@@ -668,6 +424,21 @@ end)
 SN_Heist_Editor = Silent:add_tab("Heist Editor ")
 
 -- Agency tab
+local AgencyContracts = {
+    {name = "None", index = 3},
+    {name = "Nightclub", index = 4},
+    {name = "Marina", index = 12},
+    {name = "Nightlife Leak", index = 28},
+    {name = "Country Club", index = 60},
+    {name = "Guest List", index = 123},
+    {name = "High Society Leak", index = 254},
+    {name = "Davis", index = 508},
+    {name = "Ballas", index = 1020},
+    {name = "South Central Leak", index = 2044},
+    {name = "Studio Time", index = 2045},
+    {name = "Don't Fuck With Dre", index = 4095}
+}
+
 local contractNames = {}
 for i, contract in ipairs(AgencyContracts) do
     table.insert(contractNames, contract.name)
@@ -751,6 +522,18 @@ SN_Agency:add_text("After All choices and pressing Complete Preps wait for somet
 
 -- Autoshop tab
 local SN_Autoshop = SN_Heist_Editor:add_tab("Autoshop ")
+local AutoShopContracts = {
+    { name = "None", index = -1 },
+    { name = "Union Deposit.", index = 0 },
+    { name = "Superdol. Deal", index = 1 },
+    { name = "Bank Contract", index = 2 },
+    { name = "ECU Job", index = 3 },
+    { name = "Prison Contrac.", index = 4 },
+    { name = "Agency Deal", index = 5 },
+    { name = "Lost Contract", index = 6 },
+    { name = "Data Contract", index = 7 }
+}
+
 local autoSelectedIndex = 0
 SN_Autoshop:add_imgui(function()
     ImGui.Text("Contract:")
@@ -808,6 +591,151 @@ SN_Autoshop:add_button("Skip Cutscene", SkipCutscene)
 
 -- Salvage Yard --
 local SN_Salvage = SN_Heist_Editor:add_tab("Salvage Yard ")
+local SalvageYard = {
+    robberies = {
+        { name = "Cargo Ship", index = 0 },
+        { name = "Gangbanger", index = 1 },
+        { name = "Duggan", index = 2 },
+        { name = "Podium", index = 3 },
+        { name = "McTony", index = 4 }
+    },
+    vehicles = {
+        { name = "LM87", index = 1 },
+        { name = "Cinquemila", index = 2 },
+        { name = "Autarch", index = 3 },
+        { name = "Tigon", index = 4 },
+        { name = "Champion", index = 5 },
+        { name = "10F", index = 6 },
+        { name = "SM722", index = 7 },
+        { name = "Omnis e-GT", index = 8 },
+        { name = "Growler", index = 9 },
+        { name = "Deity", index = 10 },
+        { name = "Itali RSX", index = 11 },
+        { name = "Coquette D10", index = 12 },
+        { name = "Jubilee", index = 13 },
+        { name = "Astron", index = 14 },
+        { name = "Comet S2 Cabr.", index = 15 },
+        { name = "Torero", index = 16 },
+        { name = "Cheetah Classic", index = 17 },
+        { name = "Turismo Classic", index = 18 },
+        { name = "Infernus Classic", index = 19 },
+        { name = "Stafford", index = 20 },
+        { name = "GT500", index = 21 },
+        { name = "Viseris", index = 22 },
+        { name = "Mamba", index = 23 },
+        { name = "Coquette Black.", index = 24 },
+        { name = "Stinger GT", index = 25 },
+        { name = "Z-Type", index = 26 },
+        { name = "Broadway", index = 27 },
+        { name = "Vigero ZX", index = 28 },
+        { name = "Buffalo STX", index = 29 },
+        { name = "Ruston", index = 30 },
+        { name = "Gauntl. Hellfire", index = 31 },
+        { name = "Dominator GTT", index = 32 },
+        { name = "Roosevelt Valor", index = 33 },
+        { name = "Swinger", index = 34 },
+        { name = "Stirling GT", index = 35 },
+        { name = "Omnis", index = 36 },
+        { name = "Tropos Rallye", index = 37 },
+        { name = "Jugular", index = 38 },
+        { name = "Patriot Mil-Spec", index = 39 },
+        { name = "Toros", index = 40 },
+        { name = "Caracara 4x4", index = 41 },
+        { name = "Sentinel Classic", index = 42 },
+        { name = "Weevil", index = 43 },
+        { name = "Blista Kanjo", index = 44 },
+        { name = "Eudora", index = 45 },
+        { name = "Kamacho", index = 46 },
+        { name = "Hellion", index = 47 },
+        { name = "Ellie", index = 48 },
+        { name = "Hermes", index = 49 },
+        { name = "Hustler", index = 50 },
+        { name = "Turismo Om.", index = 51 },
+        { name = "Buffalo EVX", index = 52 },
+        { name = "Itali GTO St.", index = 53 },
+        { name = "Virtue", index = 54 },
+        { name = "Ignus", index = 55 },
+        { name = "Zentorno", index = 56 },
+        { name = "Neon", index = 57 },
+        { name = "Furia", index = 58 },
+        { name = "Zorrusso", index = 59 },
+        { name = "Thrax", index = 60 },
+        { name = "Vagner", index = 61 },
+        { name = "Panthere", index = 62 },
+        { name = "Itali GTO", index = 63 },
+        { name = "S80RR", index = 64 },
+        { name = "Tyrant", index = 65 },
+        { name = "Entity MT", index = 66 },
+        { name = "Torero XO", index = 67 },
+        { name = "Neo", index = 68 },
+        { name = "Corsita", index = 69 },
+        { name = "Paragon R", index = 70 },
+        { name = "Franken Stange", index = 71 },
+        { name = "Comet Safari", index = 72 },
+        { name = "FR36", index = 73 },
+        { name = "Hotring Everon", index = 74 },
+        { name = "Komoda", index = 75 },
+        { name = "Tailgater S", index = 76 },
+        { name = "Jester Classic", index = 77 },
+        { name = "Jester RR", index = 78 },
+        { name = "Euros", index = 79 },
+        { name = "ZR350", index = 80 },
+        { name = "Cypher", index = 81 },
+        { name = "Dominator ASP", index = 82 },
+        { name = "Baller ST-D", index = 83 },
+        { name = "Casco", index = 84 },
+        { name = "Drift Yosemite", index = 85 },
+        { name = "Everon", index = 86 },
+        { name = "Penumbra FF", index = 87 },
+        { name = "V-STR", index = 88 },
+        { name = "Dominator GT", index = 89 },
+        { name = "Schlagen GT", index = 90 },
+        { name = "Cavalcade XL", index = 91 },
+        { name = "Clique", index = 92 },
+        { name = "Boor", index = 93 },
+        { name = "Sugoi", index = 94 },
+        { name = "Greenwood", index = 95 },
+        { name = "Brigham", index = 96 },
+        { name = "Issi Rally", index = 97 },
+        { name = "Seminole Fr.", index = 98 },
+        { name = "Kanjo SJ", index = 99  },
+        { name = "Previon", index = 100 }
+    },
+    modifications = {
+        { name = "Version 1", index = 0 },
+        { name = "Version 2", index = 1 },
+        { name = "Version 3", index = 2 },
+        { name = "Version 4", index = 3 },
+        { name = "Version 5", index = 4 },
+    },
+    keeps = {
+        { name = "Can't Claim", index = 0 },
+        { name = "Can Claim", index = 1 }
+    },
+    tunables = {
+        robbery_slot1_type = 1152433341,
+        robbery_slot2_type = 852564222,
+        robbery_slot3_type = 552662330,
+        vehicle_slot1_type = -1012732012,
+        vehicle_slot1_value = -1699398139,
+        vehicle_slot1_cankeep = -1700733442,
+        vehicle_slot2_type = 1366330161,
+        vehicle_slot2_value = -1997104504,
+        vehicle_slot2_cankeep = -1547046832,
+        vehicle_slot3_type = 1806057372,
+        vehicle_slot3_value = -1704051341,
+        vehicle_slot3_cankeep = 1830093543,
+        cooldown_weekly = "SALV23_VEH_ROBBERY_WEEK_ID"
+    },
+    salvage_missions = {
+        { script = "fm_content_vehrob_cargo_ship", step1 = 7185 + 1, step2 = 7330 + 1249 },
+        { script = "fm_content_vehrob_police", step1 = 9011 + 1, step2 = 9144 + 1305 },
+        { script = "fm_content_vehrob_arena", step1 = 7912 + 1, step2 = 8032 + 1314 },
+        { script = "fm_content_vehrob_casino_prize", step1 = 9191 + 1, step2 = 9328 + 1258 },
+        { script = "fm_content_vehrob_submarine", step1 = 6218 + 1, step2 = 6356 + 1159 },
+    },
+}
+
 local slot_names = { "Slot 1", "Slot 2", "Slot 3" }
 local slot1 = {
     robbery_index = 0,
@@ -1279,6 +1207,25 @@ local diamondTargetList = {
     { name = "Arts", index = 2 },
     { name = "Gold", index = 1 },
     { name = "Diamonds", index = 3 }
+}
+
+local DiamondCasinoCrewCut = {
+    { tunable = "CH_LESTER_CUT", default = 5 },
+    { tunable = "HEIST3_PREPBOARD_GUNMEN_KARL_CUT", default = 5 },
+    { tunable = "HEIST3_PREPBOARD_GUNMEN_GUSTAVO_CUT", default = 9 },
+    { tunable = "HEIST3_PREPBOARD_GUNMEN_CHARLIE_CUT", default = 7 },
+    { tunable = "HEIST3_PREPBOARD_GUNMEN_CHESTER_CUT", default = 10 },
+    { tunable = "HEIST3_PREPBOARD_GUNMEN_PATRICK_CUT", default = 8 },
+    { tunable = "HEIST3_DRIVERS_KARIM_CUT", default = 5 },
+    { tunable = "HEIST3_DRIVERS_TALIANA_CUT", default = 7 },
+    { tunable = "HEIST3_DRIVERS_EDDIE_CUT", default = 9 },
+    { tunable = "HEIST3_DRIVERS_ZACH_CUT", default = 6 },
+    { tunable = "HEIST3_DRIVERS_CHESTER_CUT", default = 10 },
+    { tunable = "HEIST3_HACKERS_RICKIE_CUT", default = 3 },
+    { tunable = "HEIST3_HACKERS_CHRISTIAN_CUT", default = 7 },
+    { tunable = "HEIST3_HACKERS_YOHAN_CUT", default = 5 },
+    { tunable = "HEIST3_HACKERS_AVI_CUT", default = 10 },
+    { tunable = "HEIST3_HACKERS_PAIGE_CUT", default = 9 }
 }
 
 local diamondDifficultyNames = {}
@@ -1834,6 +1781,11 @@ local cayoLocations = {
 	{name="Elevator", x=5012.1533, y=-5749.0107, z=28.945145},
 }
 
+local CayoPericoCrewCut = {
+    { tunable = "IH_DEDUCTION_PAVEL_CUT", default = -0.02 },
+    { tunable = "IH_DEDUCTION_FENCING_FEE", default = -0.1 }
+}
+
 local SN_Cayo = SN_Heist_Editor:add_tab("Cayo Perico Heist ")
 SN_Cayo:add_text("Cayo Bag Size Editor")
 local cayobag = SN_Cayo:add_input_int("Bag Size")
@@ -2249,6 +2201,10 @@ SN_Apartment:add_button("Kill Cooldown", function()
     globals.set_int(ACDg + 1 + (PLAYER.PLAYER_ID() * 77) + 76, -1)
     gui.show_message("Apartment Heist", "Cooldown should've been killed")
 end)
+SN_Apartment:add_sameline()
+SN_Apartment:add_button("Change Session", function()
+    changeSession(8)
+end)
 
 local heistCuts = {
     easy = {
@@ -2382,15 +2338,15 @@ SN_Apartment:add_button("Skip Checkpoint", function()
 end)
 SN_Apartment:add_sameline()
 SN_Apartment:add_button("Unlock All Jobs", function()
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_0", tunables.get_int("ROOT_ID_HASH_THE_FLECCA_JOB"))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_0", globals.get_int(AUAJg1))
     stats.set_int(MPX() .. "HEIST_SAVED_STRAND_0_L", 5)
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_1", tunables.get_int("ROOT_ID_HASH_THE_PRISON_BREAK"))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_1", globals.get_int(AUAJg2))
     stats.set_int(MPX() .. "HEIST_SAVED_STRAND_1_L", 5)
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_2", tunables.get_int("ROOT_ID_HASH_THE_HUMANE_LABS_RAID"))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_2", globals.get_int(AUAJg3))
     stats.set_int(MPX() .. "HEIST_SAVED_STRAND_2_L", 5)
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_3", tunables.get_int("ROOT_ID_HASH_SERIES_A_FUNDING"))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_3", globals.get_int(AUAJg4))
     stats.set_int(MPX() .. "HEIST_SAVED_STRAND_3_L", 5)
-    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_4", tunables.get_int("ROOT_ID_HASH_THE_PACIFIC_STANDARD_JOB"))
+    stats.set_int(MPX() .. "HEIST_SAVED_STRAND_4", globals.get_int(AUAJg5))
     stats.set_int(MPX() .. "HEIST_SAVED_STRAND_4_L", 5)
 	gui.show_message("Apartment Heist", "All jobs should've been unlocked. Don't forget to restart the game")
 end)
@@ -2468,7 +2424,7 @@ SN_Bunker:add_text("Unlock All Research temporarily")
 
 SN_Bunker:add_button("Unlock All Research", function()
 	script.run_in_fiber(function(script)
-		globals.set_int(FMg + 21564, 1)
+		globals.set_int(FMg + 21653, 1)
 		gui.show_message("Bunker Research", "ALL Bunker research has been unlocked.")
 	end)
 end)
@@ -2851,6 +2807,28 @@ function()
 end)
 
 -- Casino --
+local CasinoPrizes = {
+    { name = "Clothing 1", index = 0 },
+    { name = "Clothing 2", index = 8 },
+    { name = "Clothing 3", index = 12 },
+    { name = "2,500 RP", index = 1 },
+    { name = "5,000 RP", index = 5 },
+    { name = "7,500 RP", index = 9 },
+    { name = "10,000 RP", index = 13 },
+    { name = "15,000 RP", index = 17 },
+    { name = "$20,000", index = 2 },
+    { name = "$30,000", index = 6 },
+    { name = "$40,000", index = 14 },
+    { name = "$50,000", index = 19 },
+    { name = "10,000 Chips", index = 3 },
+    { name = "15,000 Chips", index = 7 },
+    { name = "20,000 Chips", index = 10 },
+    { name = "25,000 Chips", index = 15 },
+    { name = "Discount", index = 4 },
+    { name = "Mystery", index = 11 },
+    { name = "Vehicle", index = 18 }
+}
+
 local SN_Casino = SN_MoneyT:add_tab("Casino ")
 
 SN_Casino:add_text("Lucky Wheel")
@@ -2978,227 +2956,129 @@ function (script)
 end)
 SN_VehUtils:add_separator()
 SN_VehUtils:add_text("Vehicle unlocker")
-SN_VehUtils:add_button("Unlock Dripfeed Vehicles",
-function ()
-	globals.set_int(BEDVg5, 1)				-- bypass
-	globals.set_int(EDVg5, 1)				-- pipistrello
-	globals.set_int(FMg + 35588 + 8, 1)		--pipistrello
-	globals.set_int(EDVg12, 1)				-- dominator fx interceptor
-	globals.set_int(FMg + 35588 + 13, 1)		-- dominator fx interceptor
-	globals.set_int(EDVg8, 1)				-- dominator fx
-	globals.set_int(FMg + 35588 + 12, 1)	-- dominator fx
-	globals.set_int(EDVg3, 1)				-- impaler lx cruiser
-	globals.set_int(FMg + 35588 + 4, 1)		-- impaler lx cruiser
-	globals.set_int(EDVg15, 1)				-- pizzaboy
-	globals.set_int(FMg + 35588 + 14, 1)	-- pizzaboy
-	globals.set_int(EDVg9, 1)				-- Vorschlaghammer
-	globals.set_int(FMg + 35588 + 0, 1)		-- Vorschlaghammer
-	globals.set_int(EDVg7, 1)				--catisgator
-	globals.set_int(FMg + 35588 + 6, 1)		--catisgator
-	globals.set_int(EDVg6, 1)				-- polimpalor
-	globals.set_int(FMg + 35588 + 19, 1)	-- polimpalor
-end)
 
 SN_VehUtils:add_button("Unlock Removed Vehicles",
 function ()
-	globals.set_int(262145 + 22565, 1)
-    globals.set_int(262145 + 14708, 1)
-    globals.set_int(262145 + 34371, 1)
-    globals.set_int(262145 + 34373, 1)
-    globals.set_int(262145 + 34451, 1)
-    globals.set_int(262145 + 34349, 1)
-    globals.set_int(262145 + 34527, 1)
-    globals.set_int(262145 + 34533, 1)
-    globals.set_int(262145 + 17356, 1)
-    globals.set_int(262145 + 17372, 1)
-    globals.set_int(262145 + 34589, 1)
-    globals.set_int(262145 + 35492, 1)
-    globals.set_int(262145 + 34415, 1)
-    globals.set_int(262145 + 34417, 1)
-    globals.set_int(262145 + 34465, 1)
-    globals.set_int(262145 + 34573, 1)
-    globals.set_int(262145 + 34499, 1)
-    globals.set_int(262145 + 34495, 1)
-    globals.set_int(262145 + 34493, 1)
-    globals.set_int(262145 + 34511, 1)
-    globals.set_int(262145 + 28191, 1)
-    globals.set_int(262145 + 34501, 1)
-    globals.set_int(262145 + 34333, 1)
-    globals.set_int(262145 + 34551, 1)
-    globals.set_int(262145 + 34553, 1)
-    globals.set_int(262145 + 34409, 1)
-    globals.set_int(262145 + 34365, 1)
-    globals.set_int(262145 + 34569, 1)
-    globals.set_int(262145 + 34571, 1)
-    globals.set_int(262145 + 23726, 1)
-    globals.set_int(262145 + 34401, 1)
-    globals.set_int(262145 + 17230, 1)
-    globals.set_int(262145 + 25367, 1)
-    globals.set_int(262145 + 34335, 1)
-    globals.set_int(262145 + 34337, 1)
-    globals.set_int(262145 + 34339, 1)
-    globals.set_int(262145 + 34341, 1)
-    globals.set_int(262145 + 34325, 1)
-    globals.set_int(262145 + 18947, 1)
-    globals.set_int(262145 + 18948, 1)
-    globals.set_int(262145 + 22564, 1)
-    globals.set_int(262145 + 17229, 1)
-    globals.set_int(262145 + 34367, 1)
-    globals.set_int(262145 + 34331, 1)
-    globals.set_int(262145 + 21603, 1)
-    globals.set_int(262145 + 17364, 1)
-    globals.set_int(262145 + 25369, 1)
-    globals.set_int(262145 + 34431, 1)
-    globals.set_int(262145 + 34453, 1)
-    globals.set_int(262145 + 34497, 1)
-    globals.set_int(262145 + 25387, 1)
-    globals.set_int(262145 + 34455, 1)
-    globals.set_int(262145 + 34403, 1)
-    globals.set_int(262145 + 17355, 1)
-    globals.set_int(262145 + 34399, 1)
-    globals.set_int(262145 + 34323, 1)
     globals.set_int(262145 + 34437, 1)
-    globals.set_int(262145 + 23717, 1)
-    globals.set_int(262145 + 17358, 1)
-    globals.set_int(262145 + 17370, 1)
-    globals.set_int(262145 + 34467, 1)
-    globals.set_int(262145 + 34433, 1)
-    globals.set_int(262145 + 34435, 1)
-    globals.set_int(262145 + 34351, 1)
-    globals.set_int(262145 + 34411, 1)
+    globals.set_int(262145 + 34615, 1)
+    globals.set_int(262145 + 34621, 1)
+    globals.set_int(262145 + 34661, 1)
     globals.set_int(262145 + 34587, 1)
-    globals.set_int(262145 + 34565, 1)
-    globals.set_int(262145 + 34523, 1)
-    globals.set_int(262145 + 34369, 1)
-    globals.set_int(262145 + 34563, 1)
-    globals.set_int(262145 + 34559, 1)
-    globals.set_int(262145 + 34481, 1)
-    globals.set_int(262145 + 19951, 1)
-    globals.set_int(262145 + 34581, 1)
-    globals.set_int(262145 + 34577, 1)
-    globals.set_int(262145 + 22556, 1)
-    globals.set_int(262145 + 34585, 1)
-    globals.set_int(262145 + 34473, 1)
-    globals.set_int(262145 + 25386, 1)
-    globals.set_int(262145 + 22563, 1)
-    globals.set_int(262145 + 34457, 1)
-    globals.set_int(262145 + 34513, 1)
-    globals.set_int(262145 + 22557, 1)
-    globals.set_int(262145 + 28201, 1)
-    globals.set_int(262145 + 34405, 1)
-    globals.set_int(262145 + 34541, 1)
-    globals.set_int(262145 + 34459, 1)
-    globals.set_int(262145 + 34535, 1)
-    globals.set_int(262145 + 34429, 1)
-    globals.set_int(262145 + 25383, 1)
-    globals.set_int(262145 + 34439, 1)
-    globals.set_int(262145 + 34387, 1)
-    globals.set_int(262145 + 34361, 1)
-    globals.set_int(262145 + 34557, 1)
-    globals.set_int(262145 + 34503, 1)
     globals.set_int(262145 + 34583, 1)
-    globals.set_int(262145 + 28830, 1)
-    globals.set_int(262145 + 28190, 1)
-    globals.set_int(262145 + 25379, 1)
-    globals.set_int(262145 + 17232, 1)
-    globals.set_int(262145 + 34353, 1)
-    globals.set_int(262145 + 34555, 1)
-    globals.set_int(262145 + 34597, 1)
-    globals.set_int(262145 + 23729, 1)
-    globals.set_int(262145 + 14703, 1)
-    globals.set_int(262145 + 25385, 1)
-    globals.set_int(262145 + 34471, 1)
-    globals.set_int(262145 + 25396, 1)
-    globals.set_int(262145 + 34443, 1)
-    globals.set_int(262145 + 34441, 1)
-    globals.set_int(262145 + 25397, 1)
-    globals.set_int(262145 + 34591, 1)
-    globals.set_int(262145 + 34475, 1)
-    globals.set_int(262145 + 34561, 1)
-    globals.set_int(262145 + 25389, 1)
-    globals.set_int(262145 + 34485, 1)
-    globals.set_int(262145 + 34567, 1)
-    globals.set_int(262145 + 34427, 1)
-    globals.set_int(262145 + 34529, 1)
-    globals.set_int(262145 + 34595, 1)
-    globals.set_int(262145 + 22560, 1)
-    globals.set_int(262145 + 34505, 1)
-    globals.set_int(262145 + 34355, 1)
-    globals.set_int(262145 + 34357, 1)
-    globals.set_int(262145 + 21607, 1)
-    globals.set_int(262145 + 17363, 1)
-    globals.set_int(262145 + 17373, 1)
-    globals.set_int(262145 + 34483, 1)
-    globals.set_int(262145 + 17223, 1)
-    globals.set_int(262145 + 34507, 1)
-    globals.set_int(262145 + 34531, 1)
-    globals.set_int(262145 + 21606, 1)
-    globals.set_int(262145 + 22558, 1)
-    globals.set_int(262145 + 22562, 1)
-    globals.set_int(262145 + 34593, 1)
-    globals.set_int(262145 + 34521, 1)
-    globals.set_int(262145 + 34377, 1)
-    globals.set_int(262145 + 34393, 1)
-    globals.set_int(262145 + 34469, 1)
-    globals.set_int(262145 + 34489, 1)
-    globals.set_int(262145 + 19953, 1)
-    globals.set_int(262145 + 34509, 1)
-    globals.set_int(262145 + 25393, 1)
-    globals.set_int(262145 + 34463, 1)
-    globals.set_int(262145 + 34461, 1)
-    globals.set_int(262145 + 17366, 1)
-    globals.set_int(262145 + 34515, 1)
-    globals.set_int(262145 + 22561, 1)
-    globals.set_int(262145 + 22554, 1)
+    globals.set_int(262145 + 34581, 1)
+    globals.set_int(262145 + 34639, 1)
+    globals.set_int(262145 + 34453, 1)
+    globals.set_int(262145 + 34657, 1)
+    globals.set_int(262145 + 34659, 1)
+    globals.set_int(262145 + 34413, 1)
+    globals.set_int(262145 + 34455, 1)
+    globals.set_int(262145 + 34419, 1)
     globals.set_int(262145 + 34519, 1)
-    globals.set_int(262145 + 34345, 1)
-    globals.set_int(262145 + 34347, 1)
-    globals.set_int(262145 + 34547, 1)
-    globals.set_int(262145 + 34579, 1)
-    globals.set_int(262145 + 28831, 1)
-    globals.set_int(262145 + 34445, 1)
-    globals.set_int(262145 + 34575, 1)
-    globals.set_int(262145 + 34359, 1)
-    globals.set_int(262145 + 34479, 1)
-    globals.set_int(262145 + 23781, 1)
-    globals.set_int(262145 + 34539, 1)
-    globals.set_int(262145 + 34383, 1)
-    globals.set_int(262145 + 34381, 1)
-    globals.set_int(262145 + 34379, 1)
-    globals.set_int(262145 + 34545, 1)
-    globals.set_int(262145 + 22551, 1)
-    globals.set_int(262145 + 34343, 1)
-    globals.set_int(262145 + 34549, 1)
-    globals.set_int(262145 + 34525, 1)
-    globals.set_int(262145 + 23780, 1)
-    globals.set_int(262145 + 34537, 1)
-    globals.set_int(262145 + 34327, 1)
-    globals.set_int(262145 + 29156, 1)
-    globals.set_int(262145 + 20830, 1)
-    globals.set_int(262145 + 17371, 1)
-    globals.set_int(262145 + 25370, 1)
-    globals.set_int(262145 + 17221, 1)
-    globals.set_int(262145 + 34407, 1)
-    globals.set_int(262145 + 34477, 1)
-    globals.set_int(262145 + 26330, 1)
-    globals.set_int(262145 + 34375, 1)
-    globals.set_int(262145 + 29605, 1)
-    globals.set_int(262145 + 34487, 1)
-    globals.set_int(262145 + 22566, 1)
-    globals.set_int(262145 + 34397, 1)
+    globals.set_int(262145 + 34585, 1)
     globals.set_int(262145 + 34543, 1)
-    globals.set_int(262145 + 34517, 1)
-    globals.set_int(262145 + 17369, 1)
-    globals.set_int(262145 + 20828, 1)
-    globals.set_int(262145 + 34423, 1)
-    globals.set_int(262145 + 34425, 1)
-    globals.set_int(262145 + 34395, 1)
-    globals.set_int(262145 + 34447, 1)
+    globals.set_int(262145 + 34491, 1)
+    globals.set_int(262145 + 34411, 1)
+    globals.set_int(262145 + 34525, 1)
+    globals.set_int(262145 + 34555, 1)
+    globals.set_int(262145 + 34521, 1)
+    globals.set_int(262145 + 34523, 1)
+    globals.set_int(262145 + 34439, 1)
+    globals.set_int(262145 + 34675, 1)
+    globals.set_int(262145 + 34653, 1)
+    globals.set_int(262145 + 34611, 1)
+    globals.set_int(262145 + 34457, 1)
+    globals.set_int(262145 + 34651, 1)
+    globals.set_int(262145 + 34669, 1)
+    globals.set_int(262145 + 34665, 1)
+    globals.set_int(262145 + 34673, 1)
+    globals.set_int(262145 + 34601, 1)
+    globals.set_int(262145 + 34629, 1)
+    globals.set_int(262145 + 34547, 1)
+    globals.set_int(262145 + 34623, 1)
+    globals.set_int(262145 + 34527, 1)
+    globals.set_int(262145 + 34475, 1)
     globals.set_int(262145 + 34449, 1)
-    globals.set_int(262145 + 25384, 1)
-    globals.set_int(262145 + 17354, 1)
-    globals.set_int(262145 + 25381, 1)
-    globals.set_int(262145 + 34599, 1)
+    globals.set_int(262145 + 34645, 1)
+    globals.set_int(262145 + 34591, 1)
+    globals.set_int(262145 + 34671, 1)
+    globals.set_int(262145 + 34559, 1)
+    globals.set_int(262145 + 34531, 1)
+    globals.set_int(262145 + 34529, 1)
+    globals.set_int(262145 + 34563, 1)
+    globals.set_int(262145 + 34649, 1)
+    globals.set_int(262145 + 34573, 1)
+    globals.set_int(262145 + 34655, 1)
+    globals.set_int(262145 + 34515, 1)
+    globals.set_int(262145 + 34617, 1)
+    globals.set_int(262145 + 34683, 1)
+    globals.set_int(262145 + 34593, 1)
+    globals.set_int(262145 + 34443, 1)
+    globals.set_int(262145 + 34445, 1)
+    globals.set_int(262145 + 34571, 1)
+    globals.set_int(262145 + 34595, 1)
+    globals.set_int(262145 + 34619, 1)
+    globals.set_int(262145 + 34681, 1)
+    globals.set_int(262145 + 34609, 1)
+    globals.set_int(262145 + 34465, 1)
+    globals.set_int(262145 + 34481, 1)
+    globals.set_int(262145 + 34557, 1)
+    globals.set_int(262145 + 34577, 1)
+    globals.set_int(262145 + 34597, 1)
+    globals.set_int(262145 + 34603, 1)
+    globals.set_int(262145 + 34607, 1)
+    globals.set_int(262145 + 34635, 1)
+    globals.set_int(262145 + 34667, 1)
+    globals.set_int(262145 + 34663, 1)
+    globals.set_int(262145 + 34447, 1)
+    globals.set_int(262145 + 34567, 1)
+    globals.set_int(262145 + 34471, 1)
+    globals.set_int(262145 + 34633, 1)
+    globals.set_int(262145 + 34431, 1)
+    globals.set_int(262145 + 34637, 1)
+    globals.set_int(262145 + 34613, 1)
+    globals.set_int(262145 + 34625, 1)
+    globals.set_int(262145 + 34415, 1)
+    globals.set_int(262145 + 34565, 1)
+    globals.set_int(262145 + 34463, 1)
+    globals.set_int(262145 + 34575, 1)
+    globals.set_int(262145 + 34485, 1)
+    globals.set_int(262145 + 34631, 1)
+    globals.set_int(262145 + 34605, 1)
+    globals.set_int(262145 + 34535, 1)
+    globals.set_int(262145 + 34537, 1)
+    globals.set_int(262145 + 34687, 1)
+    globals.set_int(262145 + 17319, 1)
+    globals.set_int(262145 + 17321, 1)
+    globals.set_int(262145 + 20042, 1)
+    globals.set_int(262145 + 21695, 1)
+    globals.set_int(262145 + 21696, 1)
+    globals.set_int(262145 + 22640, 1)
+    globals.set_int(262145 + 22645, 1)
+    globals.set_int(262145 + 22646, 1)
+    globals.set_int(262145 + 22651, 1)
+    globals.set_int(262145 + 22654, 1)
+    globals.set_int(262145 + 23805, 1)
+    globals.set_int(262145 + 23817, 1)
+    globals.set_int(262145 + 23869, 1)
+    globals.set_int(262145 + 25455, 1)
+    globals.set_int(262145 + 25458, 1)
+    globals.set_int(262145 + 25475, 1)
+    globals.set_int(262145 + 26418, 1)
+    globals.set_int(262145 + 28278, 1)
+    globals.set_int(262145 + 28279, 1)
+    globals.set_int(262145 + 28918, 1)
+    globals.set_int(262145 + 28919, 1)
+    globals.set_int(262145 + 29693, 1)
+    globals.set_int(262145 + 17443, 1)
+    globals.set_int(262145 + 17444, 1)
+    globals.set_int(262145 + 17445, 1)
+    globals.set_int(262145 + 17447, 1)
+    globals.set_int(262145 + 17453, 1)
+    globals.set_int(262145 + 17455, 1)
+    globals.set_int(262145 + 17458, 1)
+    globals.set_int(262145 + 17459, 1)
+    globals.set_int(262145 + 17460, 1)
+    globals.set_int(262145 + 17462, 1)
 end)
 
 
@@ -3241,15 +3121,15 @@ end)
 SN_unlocker:add_sameline()
 SN_unlocker:add_button("Unlock Halloween Vehicles",
 function ()
-	globals.set_int(262145 + 12025, 1)
+	globals.set_int(262145 + 12114, 1)
 end)
 SN_unlocker:add_button("BASE5 T-SHIRT",
 function() 
-	globals.set_int(262145 + 23812, 1) 
+	globals.set_int(262145 + 23900, 1) 
 end)
 SN_unlocker:add_sameline()
 SN_unlocker:add_button("Unlock Mercenaries Masks",function() 
-	for i = 34625,34643 do
+	for i = 34713, 34731 do
 		globals.set_int(262145 + i, 1)
 	end
 end)
@@ -3272,6 +3152,9 @@ SN_unlocker:add_button("Unlock Trade Prices for Cop Cars",
 	end
 )
 SN_unlocker:add_sameline()
+SN_unlocker:add_button("Unlock Trade Prices for Arena War Cars", function()
+    stats_set_packed_bools(24963, 25109, true)
+end)
 SN_unlocker:add_button("Unlock The Shocker",
 function ()
 	stats.set_packed_stat_bool(51196, true)
@@ -3296,7 +3179,7 @@ function ()
 end)
 SN_unlocker:add_button("Unlock Halloween Face Paint",
 function ()
-	globals.set_int(FMg + 12027, 1)
+	globals.set_int(FMg + 12116, 1)
 end)
 SN_unlocker:add_button("Unlock Skull Tattoo",
 function () 
@@ -3416,12 +3299,13 @@ SN_unlocker:add_button("SnowMans",
 function ()
 	unlock_packed_bools(36630, 36654)
 end)
--- LSCM ---
 
+
+-- LSCM ---
 local SN_LSCM = SN_Miscellaneous:add_tab("LSCM Unlocker Menu ")
 
 SN_LSCM:add_button("Unlock All Rep Lvl 1000", function()
-	for i = 262145 + 30958, 262145 + 30987 do
+	for i = 262145 + 31046, 262145 + 31075 do
 		globals.set_float(i, 100000)
 	end
 end)
@@ -3436,9 +3320,6 @@ SN_LSCM:add_button("Unlock Prize Ride",
 
 
 -- Gun Van
-
-
-
 local SN_gun_van_tab = Silent:add_tab("Gun Van Menu ")
 
 local gunvan_locations = {
@@ -3697,8 +3578,8 @@ script.register_looped("Gun Van", function()
 	end
 
 	if livery_lock then
-		local value = locals.get_int("gunclub_shop", 142 + 747) | (1 << 8)
-		locals.set_int("gunclub_shop", 142 + 747, value)
+		local value = locals.get_int("gunclub_shop", 199 + 747) | (1 << 8)
+		locals.set_int("gunclub_shop", 199 + 747, value)
 	end
 
 	if gta_plus_blip then
@@ -3752,8 +3633,8 @@ SN_gun_van_tab:add_imgui(function()
 
 	if on_tick then
 		if not livery_lock then
-			local value = locals.get_int("gunclub_shop", 142 + 747) & ~(1 << 8)
-			locals.set_int("gunclub_shop", 142 + 747, value)
+			local value = locals.get_int("gunclub_shop", 199 + 747) & ~(1 << 8)
+			locals.set_int("gunclub_shop", 199 + 747, value)
 		end
 	end
 
